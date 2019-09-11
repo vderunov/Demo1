@@ -1,27 +1,21 @@
-'use strict';
-
 import { checkParameters } from './components/checkParamTask7.js';
 
 export function fibonacci(initialObject) {
-    let parameterError;
-
-    parameterError = checkParameters(initialObject);
+    const parameterError = checkParameters(initialObject);
 
     if (parameterError) {
         return parameterError;
     }
 
-    if (initialObject.hasOwnProperty('length')) {
+    if ({}.hasOwnProperty.call(initialObject, 'length')) {
         return getFibonacciSeries(initialObject);
-    } else {
-        return getFibonacciMinMax(initialObject);
     }
+    return getFibonacciMinMax(initialObject);
 }
 
 export function getFibonacciSeries(initialObject) {
-    let series = initialObject.length,
-        newArray = [0, 1],
-        i;
+    const series = initialObject.length;
+    const newArray = [0, 1];
 
     if (series === 0) {
         return [];
@@ -31,19 +25,17 @@ export function getFibonacciSeries(initialObject) {
         return [0];
     }
 
-    for (i = 2; i < series; i++) {
+    for (let i = 2; i < series; i++) {
         newArray.push(newArray[i - 1] + newArray[i - 2]);
     }
     return newArray;
 }
 
 export function getFibonacciMinMax(initialObject) {
-    let { min, max } = initialObject,
-        newArray = [],
-        sum,
-        i;
+    const { min, max } = initialObject;
+    const newArray = [];
 
-    for (i = 0, sum = 1; sum <= max; sum += i, i = sum - i) {
+    for (let i = 0, sum = 1; sum <= max; sum += i, i = sum - i) {
         if (sum >= min) {
             newArray.push(sum);
         }

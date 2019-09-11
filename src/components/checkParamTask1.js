@@ -1,10 +1,8 @@
-'use strict';
-
 import { isNumeric } from './isNumeric.js';
 
 export function checkParameters(length, width, symbol) {
-    const maxBoardSize = 8,
-        maxSymbolLength = 1;
+    const maxBoardSize = 8;
+    const maxSymbolLength = 1;
 
     if (length < 0 || width < 0) {
         return {
@@ -17,6 +15,13 @@ export function checkParameters(length, width, symbol) {
         return {
             status: 'failed',
             reason: 'Length and width cannot be 0',
+        };
+    }
+
+    if (length !== width) {
+        return {
+            status: 'failed',
+            reason: 'Width and length must be equal',
         };
     }
 
@@ -36,7 +41,10 @@ export function checkParameters(length, width, symbol) {
     }
 
     if (!symbol) {
-        return { status: 'failed', reason: 'The third parameter cannot be an empty string, enter any character' };
+        return {
+            status: 'failed',
+            reason: 'The third parameter cannot be an empty string, enter any character',
+        };
     }
 
     if (length > maxBoardSize || width > maxBoardSize) {
@@ -52,4 +60,7 @@ export function checkParameters(length, width, symbol) {
             reason: 'Enter only one character (example: "*")',
         };
     }
+    return false;
 }
+
+export default checkParameters;

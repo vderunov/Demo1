@@ -1,24 +1,19 @@
-'use strict';
-
 import { checkParameters } from './components/checkParamTask5.js';
 
 export function luckyTicketCounting(initialObject) {
-    let easyWayCount = 0,
-        hardWayCount = 0,
-        parameterError,
-        ticketStr,
-        result,
-        i;
+    let easyWayCount = 0;
+    let hardWayCount = 0;
+    let ticketStr;
 
-    parameterError = checkParameters(initialObject);
+    const parameterError = checkParameters(initialObject);
 
     if (parameterError) {
         return parameterError;
     }
 
-    let { min, max } = initialObject;
+    const { min, max } = initialObject;
 
-    for (i = min; i <= max; i++) {
+    for (let i = min; i <= max; i++) {
         ticketStr = String(i).padStart(6, '0');
 
         if (findTicketsEasyWay(ticketStr)) {
@@ -31,25 +26,24 @@ export function luckyTicketCounting(initialObject) {
     }
 
     if (easyWayCount > hardWayCount) {
-        result = {
-            winner: `Winner: Easy way to count.`,
-            easy: easyWayCount,
-            hard: hardWayCount,
-        };
-    } else {
-        result = {
-            winner: `Winner: Hard way to count.`,
+        return {
+            winner: 'Winner: Easy way to count.',
             easy: easyWayCount,
             hard: hardWayCount,
         };
     }
-
-    return result;
+    return {
+        winner: 'Winner: Hard way to count.',
+        easy: easyWayCount,
+        hard: hardWayCount,
+    };
 }
 
+export default luckyTicketCounting;
+
 function findTicketsEasyWay(ticketStr) {
-    let firstThreeDigits = 0,
-        lastThreeDigits = 0;
+    let firstThreeDigits = 0;
+    let lastThreeDigits = 0;
 
     firstThreeDigits += +ticketStr[0];
     firstThreeDigits += +ticketStr[1];
@@ -63,8 +57,8 @@ function findTicketsEasyWay(ticketStr) {
 }
 
 function findTicketsHardWay(ticketStr) {
-    let firstThreeDigits = 0,
-        lastThreeDigits = 0;
+    let firstThreeDigits = 0;
+    let lastThreeDigits = 0;
 
     firstThreeDigits += +ticketStr[0];
     firstThreeDigits += +ticketStr[2];

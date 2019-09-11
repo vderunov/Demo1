@@ -1,9 +1,7 @@
-'use strict';
-
 import { isNumeric } from './isNumeric.js';
 
 export function checkParameters(initialObject) {
-    let maxLengthProp = 6;
+    const maxLengthProp = 6;
 
     if (!initialObject) {
         return {
@@ -19,14 +17,16 @@ export function checkParameters(initialObject) {
         };
     }
 
-    for (let key in initialObject) {
-        let value = initialObject[key];
-        for (let char of value) {
-            if (!isNumeric(char)) {
-                return {
-                    status: 'failed',
-                    reason: 'Properties entered incorrectly. The min and max properties must contain only numbers',
-                };
+    for (const key in initialObject) {
+        if ({}.hasOwnProperty.call(initialObject, key)) {
+            const value = initialObject[key];
+            for (const char of value) {
+                if (!isNumeric(char)) {
+                    return {
+                        status: 'failed',
+                        reason: 'Properties entered incorrectly. The min and max properties must contain only numbers',
+                    };
+                }
             }
         }
     }
@@ -37,4 +37,7 @@ export function checkParameters(initialObject) {
             reason: 'The min property must not be greater than the max property',
         };
     }
+    return false;
 }
+
+export default checkParameters;

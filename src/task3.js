@@ -1,35 +1,27 @@
-'use strict';
-
 import { checkParameters } from './components/checkParamTask3.js';
 
 export function makeTrianglesSorting(arrTriangles) {
-    let arrResultSortedTriangles = [],
-        parameterError,
-        array = [],
-        i;
+    const array = [];
 
-    parameterError = checkParameters(arrTriangles);
+    const parameterError = checkParameters(arrTriangles);
 
     if (parameterError) {
         return parameterError;
     }
 
-    for (i = 0; i < arrTriangles.length; i++) {
+    for (let i = 0; i < arrTriangles.length; i++) {
         const [vertices, a, b, c] = Object.values(arrTriangles[i]);
-
-        if (a > 0 && b > 0 && c > 0 && (a + b > c && b + c > a && a + c > b)) {
-            // Determine the half-perimeter
-            const p = (a + b + c) * 0.5;
-            // use Heron's formula
-            const s = Math.sqrt(p * (p - a) * (p - b) * (p - c));
-            array.push({ vertices: vertices, areaTriangle: s });
-        }
+        // Determine the half-perimeter
+        const p = (a + b + c) * 0.5;
+        // use Heron's formula
+        const s = Math.sqrt(p * (p - a) * (p - b) * (p - c));
+        array.push({ vertices, areaTriangle: s });
     }
-    array.sort((a, b) => a.areaTriangle - b.areaTriangle).reverse();
-    array.forEach(element => arrResultSortedTriangles.push(element.vertices));
-
-    return arrResultSortedTriangles;
+    array.sort((a, b) => b.areaTriangle - a.areaTriangle);
+    return array.map((element) => element.vertices);
 }
+
+export default makeTrianglesSorting;
 
 // console.log(
 //     makeTrianglesSorting([
@@ -63,5 +55,5 @@ export function makeTrianglesSorting(arrTriangles) {
 //             k: 12,
 //             l: 13.65,
 //         },
-//     ])
+//     ]),
 // );

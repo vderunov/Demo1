@@ -1,10 +1,8 @@
-'use strict';
-
 import { isNumeric } from './isNumeric.js';
 
 export function checkParameters(arrTriangles) {
-    let index = 0,
-        element;
+    let index = 0;
+    let element;
 
     if (!arrTriangles) {
         return {
@@ -32,7 +30,7 @@ export function checkParameters(arrTriangles) {
         if (typeof element !== 'object') {
             return {
                 status: 'failed',
-                reason: `Array elements must be objects with properties`,
+                reason: 'Array elements must be objects with properties',
             };
         }
 
@@ -67,9 +65,9 @@ export function checkParameters(arrTriangles) {
         const [name, keyOne, keyTwo, keyThree] = Object.keys(element);
 
         if (
-            keyOne.toUpperCase() !== element[name][0] ||
-            keyTwo.toUpperCase() !== element[name][1] ||
-            keyThree.toUpperCase() !== element[name][2]
+            keyOne.toUpperCase() !== element[name][0]
+            || keyTwo.toUpperCase() !== element[name][1]
+            || keyThree.toUpperCase() !== element[name][2]
         ) {
             return {
                 status: 'failed',
@@ -85,9 +83,9 @@ export function checkParameters(arrTriangles) {
         }
 
         if (
-            typeof element[keyOne] !== 'number' ||
-            typeof element[keyTwo] !== 'number' ||
-            typeof element[keyThree] !== 'number'
+            typeof element[keyOne] !== 'number'
+            || typeof element[keyTwo] !== 'number'
+            || typeof element[keyThree] !== 'number'
         ) {
             return {
                 status: 'failed',
@@ -95,4 +93,7 @@ export function checkParameters(arrTriangles) {
             };
         }
     }
+    return false;
 }
+
+export default checkParameters;

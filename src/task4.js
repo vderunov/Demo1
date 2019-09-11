@@ -1,17 +1,11 @@
-'use strict';
-
 import { checkParameters } from './components/checkParamTask4.js';
 
 export function getPalindrome(initialNumber) {
-    let initialStr = String(initialNumber),
-        minPalindromeLength = 2,
-        arrOfPalindromes = [],
-        parameterError,
-        reversedStr,
-        i,
-        j;
+    let initialStr = String(initialNumber);
+    let arrOfPalindromes = [];
+    const minPalindromeLength = 2;
 
-    parameterError = checkParameters(initialNumber);
+    const parameterError = checkParameters(initialNumber);
 
     if (parameterError) {
         return parameterError;
@@ -21,7 +15,7 @@ export function getPalindrome(initialNumber) {
         return;
     }
 
-    reversedStr = initialStr
+    const reversedStr = initialStr
         .split('')
         .reverse()
         .join('');
@@ -34,8 +28,8 @@ export function getPalindrome(initialNumber) {
         initialStr = initialStr.slice(0, initialStr.length - 1);
     }
 
-    for (i = 0; i < initialStr.length; i++) {
-        for (j = initialStr.length - 1; j > i; j--) {
+    for (let i = 0; i < initialStr.length; i++) {
+        for (let j = initialStr.length - 1; j > i; j--) {
             if (initialStr[i] === initialStr[j]) {
                 arrOfPalindromes.push(getPalindrome(initialStr.slice(i, j + 1)));
             }
@@ -47,22 +41,20 @@ export function getPalindrome(initialNumber) {
 
     if (arrOfPalindromes.length === 0) {
         return 0;
-    } else {
-        return Math.max(...arrOfPalindromes);
     }
+    return Math.max(...arrOfPalindromes);
 }
 
 function flatten(arr) {
     if (Array.isArray(arr)) {
-        return arr.reduce(function(accumulator, currentValue) {
-            return accumulator.concat(flatten(currentValue));
-        }, []);
-    } else {
-        return arr;
+        return arr.reduce((accumulator, currentValue) => accumulator.concat(flatten(currentValue)), []);
     }
+    return arr;
 }
 
-// console.log(getPalindrome(1234437));
+export default getPalindrome;
+
+// console.log(getPalindrome('1234437'));
 // console.log(getPalindrome(12344371));
 // console.log(getPalindrome(200212344371));
 // console.log(getPalindrome(3443));

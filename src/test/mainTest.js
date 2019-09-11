@@ -4,5 +4,6 @@ import {} from './task4/test4.js';
 import {} from './task5/test5.js';
 import {} from './task6/test6.js';
 import {} from './task7/test7.js';
-export let assert = chai.assert;
+
+export const { assert } = chai;
 mocha.run();

@@ -1,9 +1,7 @@
-'use strict';
-
 import { isNumeric } from './isNumeric.js';
 
 export function checkParameters(initialObject) {
-    let maxLength = 1000000;
+    const maxLength = 1000000;
 
     if (!initialObject) {
         return {
@@ -12,7 +10,7 @@ export function checkParameters(initialObject) {
         };
     }
 
-    if (initialObject.hasOwnProperty('length')) {
+    if ({}.hasOwnProperty.call(initialObject, 'length')) {
         if (!isNumeric(initialObject.length)) {
             return {
                 status: 'failed',
@@ -55,4 +53,7 @@ export function checkParameters(initialObject) {
             };
         }
     }
+    return false;
 }
+
+export default checkParameters;

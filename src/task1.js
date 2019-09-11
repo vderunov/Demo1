@@ -1,26 +1,18 @@
-'use strict';
-
 import { checkParameters } from './components/checkParamTask1.js';
 
 export function showChessBoard(length, width, symbol) {
-    let parameterError,
-        field = '',
-        i = 0,
-        j = 0;
+    const light = ` ${symbol}`;
+    const dark = `${symbol} `;
 
-    parameterError = checkParameters(length, width, symbol);
+    const parameterError = checkParameters(length, width, symbol);
 
     if (parameterError) {
         return parameterError;
     }
 
-    for (i = 0; i < length; i++) {
-        for (j = 0; j < width; j++) {
-            (i + j) % 2 ? (field += symbol) : (field += ' ');
-        }
-        field += '\n';
-    }
-    return field;
+    return `${light.repeat(length / 2)}\n${dark.repeat(width / 2)}\n`.repeat(width / 2);
 }
+
+export default showChessBoard;
 
 // console.log(showChessBoard(8, 8, '*'));

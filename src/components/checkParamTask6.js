@@ -1,9 +1,7 @@
-'use strict';
-
 import { isNumeric } from './isNumeric.js';
 
 export function checkParameters(rowLength, minAmountExponent) {
-    let maxLength = 1000000;
+    const maxLength = 1000000;
 
     if (!rowLength && !minAmountExponent) {
         return {
@@ -39,4 +37,7 @@ export function checkParameters(rowLength, minAmountExponent) {
             reason: 'Error entering parameters. Maximum length 1,000,000',
         };
     }
+    return false;
 }
+
+export default checkParameters;

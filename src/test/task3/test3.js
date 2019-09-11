@@ -3,7 +3,7 @@ import { assert } from '../mainTest.js';
 
 mocha.setup('bdd');
 
-describe('Triangle sorting', function() {
+describe('Triangle sorting', () => {
     const parameter = [
         {
             vertices: 'ABC',
@@ -13,11 +13,11 @@ describe('Triangle sorting', function() {
         },
     ];
 
-    it('Does the function return an array?', function() {
+    it('Does the function return an array?', () => {
         assert.typeOf(makeTrianglesSorting(parameter), 'array');
     });
 
-    it('Result test: ZHO, DEV, IKL, ABC, ZIP', function() {
+    it('Result test: ZHO, DEV, IKL, ABC, ZIP', () => {
         assert.deepEqual(
             makeTrianglesSorting([
                 {
@@ -51,7 +51,7 @@ describe('Triangle sorting', function() {
                     l: 13.65,
                 },
             ]),
-            ['ZHO', 'DEV', 'IKL', 'ABC', 'ZIP']
+            ['ZHO', 'DEV', 'IKL', 'ABC', 'ZIP'],
         );
     });
 });
