@@ -1,8 +1,9 @@
 import { isNumeric } from './isNumeric.js';
 
 export function checkParameters(length, width, symbol) {
-    const maxBoardSize = 8;
+    const maxBoardSize = 50;
     const maxSymbolLength = 1;
+    const zero = '0';
 
     if (length < 0 || width < 0) {
         return {
@@ -11,17 +12,10 @@ export function checkParameters(length, width, symbol) {
         };
     }
 
-    if (length === 0 || width === 0) {
+    if (length === zero || width === zero) {
         return {
             status: 'failed',
             reason: 'Length and width cannot be 0',
-        };
-    }
-
-    if (length !== width) {
-        return {
-            status: 'failed',
-            reason: 'Width and length must be equal',
         };
     }
 
@@ -36,30 +30,38 @@ export function checkParameters(length, width, symbol) {
         };
     }
 
-    if (!isNumeric(length) || !isNumeric(width)) {
-        return { status: 'failed', reason: 'The first and second parameters must be numbers' };
-    }
-
-    if (!symbol) {
+    if (length !== width && (!isNaN(length) && !isNaN(width))) {
         return {
             status: 'failed',
-            reason: 'The third parameter cannot be an empty string, enter any character',
+            reason: 'Width and length must be equal',
         };
+    }
+
+    if (!isNumeric(length) || !isNumeric(width)) {
+        return { status: 'failed', reason: 'The first and second parameters must be numbers' };
     }
 
     if (length > maxBoardSize || width > maxBoardSize) {
         return {
             status: 'failed',
-            reason: 'Maximum board size 8 x 8',
+            reason: 'Maximum board size 50 x 50',
         };
     }
 
     if (symbol.length > maxSymbolLength) {
         return {
             status: 'failed',
-            reason: 'Enter only one character (example: "*")',
+            reason: 'Expected only one character (example: "*")',
         };
     }
+
+    if (length % 2 !== 0) {
+        return {
+            status: 'failed',
+            reason: 'Length and width must be even: (3, 3, *)',
+        };
+    }
+
     return false;
 }
 

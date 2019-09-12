@@ -1,16 +1,15 @@
 import { checkParameters } from './components/checkParamTask3.js';
 
-export function makeTrianglesSorting(arrTriangles) {
+document.querySelector('#get-sort').addEventListener('click', createBase);
+document.querySelector('#clear-base-btn').addEventListener('click', clearBase);
+
+let arrTrianglesBase = [];
+
+export function makeTrianglesSorting(trianglesBase) {
     const array = [];
 
-    const parameterError = checkParameters(arrTriangles);
-
-    if (parameterError) {
-        return parameterError;
-    }
-
-    for (let i = 0; i < arrTriangles.length; i++) {
-        const [vertices, a, b, c] = Object.values(arrTriangles[i]);
+    for (let i = 0; i < trianglesBase.length; i++) {
+        const [vertices, a, b, c] = Object.values(trianglesBase[i]);
         // Determine the half-perimeter
         const p = (a + b + c) * 0.5;
         // use Heron's formula
@@ -18,42 +17,46 @@ export function makeTrianglesSorting(arrTriangles) {
         array.push({ vertices, areaTriangle: s });
     }
     array.sort((a, b) => b.areaTriangle - a.areaTriangle);
-    return array.map((element) => element.vertices);
+
+    return (document.querySelector('#root-triangles').innerHTML = array.map(
+        element => element.vertices,
+    ));
+}
+
+export function createBase() {
+    const objTriangle = {};
+
+    objTriangle.vertices = document.querySelector('#vertices').value;
+
+    objTriangle[document.querySelector('#first-side-letter').value] = parseInt(
+        document.querySelector('#first-side-size').value,
+        10,
+    );
+    objTriangle[document.querySelector('#second-side-letter').value] = parseInt(
+        document.querySelector('#second-side-size').value,
+        10,
+    );
+    objTriangle[document.querySelector('#third-side-letter').value] = parseInt(
+        document.querySelector('#third-side-size').value,
+        10,
+    );
+
+    arrTrianglesBase.push(objTriangle);
+    const parameterError = checkParameters(arrTrianglesBase);
+
+    if (parameterError) {
+        console.log(arrTrianglesBase);
+        arrTrianglesBase = arrTrianglesBase.slice(0, arrTrianglesBase.length - 1);
+        console.log(parameterError);
+        return parameterError;
+    }
+    makeTrianglesSorting(arrTrianglesBase);
+
+    return arrTrianglesBase;
+}
+
+function clearBase() {
+    arrTrianglesBase = [];
 }
 
 export default makeTrianglesSorting;
-
-// console.log(
-//     makeTrianglesSorting([
-//         {
-//             vertices: 'ZHO',
-//             z: 10,
-//             h: 2019e-2,
-//             o: 22.36,
-//         },
-//         {
-//             vertices: 'DEV',
-//             d: 13,
-//             e: 14,
-//             v: 15,
-//         },
-//         {
-//             vertices: 'ZIP',
-//             z: 6,
-//             i: 10,
-//             p: 1114e-2,
-//         },
-//         {
-//             vertices: 'ABC',
-//             a: 6,
-//             b: 10,
-//             c: 12.07,
-//         },
-//         {
-//             vertices: 'IKL',
-//             i: 9,
-//             k: 12,
-//             l: 13.65,
-//         },
-//     ]),
-// );

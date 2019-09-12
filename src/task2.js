@@ -26,11 +26,10 @@ export function analyzeEnvelopes(envelopeA, envelopeB) {
 
     const hypotenuse = Math.sqrt(catLittle1 ** 2 + catLittle2 ** 2);
 
-    return ('Margin: ', hypotenuse - envelopeB.height);
+    return 'Margin: ', hypotenuse - envelopeB.height;
 }
 
 export default analyzeEnvelopes;
-
 
 // const envelopeA = {
 //     width: 9,

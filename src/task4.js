@@ -47,7 +47,10 @@ export function getPalindrome(initialNumber) {
 
 function flatten(arr) {
     if (Array.isArray(arr)) {
-        return arr.reduce((accumulator, currentValue) => accumulator.concat(flatten(currentValue)), []);
+        return arr.reduce(
+            (accumulator, currentValue) => accumulator.concat(flatten(currentValue)),
+            [],
+        );
     }
     return arr;
 }
