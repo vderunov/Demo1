@@ -1,29 +1,17 @@
-import { checkParameters } from './components/checkParamTask6.js';
+export default function numericSequence(rowLength, minAmountExponent) {
+  const arrNumbers = [];
+  let base;
+  let i = 0;
 
-export function numericSequence(rowLength, minAmountExponent) {
-    const arrNumbers = [];
-    let base;
-    let i = 0;
+  do {
+    base = i ** 2;
 
-    const parameterError = checkParameters(rowLength, minAmountExponent);
-
-    if (parameterError) {
-        return parameterError;
+    if (base >= minAmountExponent) {
+      arrNumbers.push(i);
     }
 
-    do {
-        base = i ** 2;
+    i++;
+  } while (arrNumbers.length < rowLength);
 
-        if (base >= minAmountExponent) {
-            arrNumbers.push(i);
-        }
-
-        i++;
-    } while (arrNumbers.length < rowLength);
-
-    return arrNumbers.join(', ');
+  return arrNumbers.join(', ');
 }
-
-export default numericSequence;
-
-// console.log(numericSequence(5, 36));

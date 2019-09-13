@@ -1,65 +1,45 @@
-import { checkParameters } from './components/checkParamTask4.js';
+export default function getPalindrome(initValue) {
+  let arrOfPalindromes = [];
+  const minPalindromeLength = 2;
 
-export function getPalindrome(initialNumber) {
-    let initialStr = String(initialNumber);
-    let arrOfPalindromes = [];
-    const minPalindromeLength = 2;
+  if (initValue.length < minPalindromeLength) {
+    return;
+  }
 
-    const parameterError = checkParameters(initialNumber);
+  const reversedStr = initValue
+    .split('')
+    .reverse()
+    .join('');
 
-    if (parameterError) {
-        return parameterError;
+  if (initValue === reversedStr) {
+    return +initValue;
+  }
+
+  if (initValue[0] === initValue[initValue.length - 1] && initValue !== reversedStr) {
+    initValue = initValue.slice(0, initValue.length - 1);
+  }
+
+  for (let i = 0; i < initValue.length; i++) {
+    for (let j = initValue.length - 1; j > i; j--) {
+      if (initValue[i] === initValue[j]) {
+        arrOfPalindromes.push(getPalindrome(initValue.slice(i, j + 1)));
+      }
     }
+  }
 
-    if (initialStr.length < minPalindromeLength) {
-        return;
-    }
+  // extract nested arrays
+  arrOfPalindromes = flatten(arrOfPalindromes);
 
-    const reversedStr = initialStr
-        .split('')
-        .reverse()
-        .join('');
+  if (arrOfPalindromes.length === 0) {
+    return 0;
+  }
 
-    if (initialStr === reversedStr) {
-        return +initialStr;
-    }
-
-    if (initialStr[0] === initialStr[initialStr.length - 1] && initialStr !== reversedStr) {
-        initialStr = initialStr.slice(0, initialStr.length - 1);
-    }
-
-    for (let i = 0; i < initialStr.length; i++) {
-        for (let j = initialStr.length - 1; j > i; j--) {
-            if (initialStr[i] === initialStr[j]) {
-                arrOfPalindromes.push(getPalindrome(initialStr.slice(i, j + 1)));
-            }
-        }
-    }
-
-    // extract nested arrays
-    arrOfPalindromes = flatten(arrOfPalindromes);
-
-    if (arrOfPalindromes.length === 0) {
-        return 0;
-    }
-    return Math.max(...arrOfPalindromes);
+  return Math.max(...arrOfPalindromes);
 }
 
 function flatten(arr) {
-    if (Array.isArray(arr)) {
-        return arr.reduce(
-            (accumulator, currentValue) => accumulator.concat(flatten(currentValue)),
-            [],
-        );
-    }
-    return arr;
+  if (Array.isArray(arr)) {
+    return arr.reduce((accumulator, currentValue) => accumulator.concat(flatten(currentValue)), []);
+  }
+  return arr;
 }
-
-export default getPalindrome;
-
-// console.log(getPalindrome('1234437'));
-// console.log(getPalindrome(12344371));
-// console.log(getPalindrome(200212344371));
-// console.log(getPalindrome(3443));
-// console.log(getPalindrome(123456789));
-// console.log(getPalindrome(645345543900));

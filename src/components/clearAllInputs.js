@@ -1,9 +1,7 @@
 document.querySelectorAll('.clear-all-inputs').forEach(elem => {
-    elem.onclick = clearInputs;
+  elem.onclick = clearInputs;
 });
 
-export function clearInputs() {
-    [...document.querySelectorAll('input')].forEach(elem => (elem.value = ''));
+export default function clearInputs() {
+  [...document.querySelectorAll('input')].forEach(elem => (elem.value = ''));
 }
-
-export default clearInputs;

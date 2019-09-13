@@ -6,56 +6,96 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>JS Elementary Tasks</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/6.2.0/mocha.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/6.2.0/mocha.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/4.2.0/chai.js"></script>
-    <script type="module" src="./main.js"></script>
     <link rel="stylesheet" href="./src/css/style.css" />
 </head>
 
 <body>
-    <div>
-        <div class="container">
-            <h3>Chess</h3>
-            <label for="length">Length:</label>
-            <input type="text" id="length" placeholder="Even values" />
-            <label for="width">Width:</label>
-            <input type="text" id="width" placeholder="Even values" />
-            <label for="symbol">Symbol:</label>
-            <input type="text" id="symbol" />
-            <button class="btn chessBtn">Create chess</button>
-            <button class="btn clear-all-inputs">Clear all inputs</button>
+    <div class="info">
+        <div class="info-header">
+            <button class="btn btn-tabs info-header-tab">Chess</button>
+            <button class="btn btn-tabs info-header-tab">Triangle sorting</button>
+            <button class="btn btn-tabs info-header-tab">Palindrome</button>
+            <button class="btn btn-tabs info-header-tab">Lucky tickets</button>
+            <button class="btn btn-tabs info-header-tab">Numeric sequence</button>
         </div>
-        <div class="root-chess"></div>
-        <hr>
-        <div class="container">
-            <h3>Triangle sorting</h3>
-            <label for="vertices">Vertices:</label>
-            <input type="text" id="vertices" placeholder="ZHO" />
-            <hr>
-            <label for="first-side-letter">First side:</label>
-            <input type="text" id="first-side-letter" placeholder="z" />
-            <label for="first-side-size">length:</label>
-            <input type="text" id="first-side-size" placeholder="13" />
-            <hr>
-            <label for="second-side-letter">Second side:</label>
-            <input type="text" id="second-side-letter" placeholder="h" />
-            <label for="second-side-size">length:</label>
-            <input type="text" id="second-side-size" placeholder="14" />
-            <hr>
-            <label for="third-side-letter">Third side:</label>
-            <input type="text" id="third-side-letter" placeholder="o" />
-            <label for="third-side-size">length:</label>
-            <input type="text" id="third-side-size" placeholder="15" />
-            <hr>
-            <button class="btn" id="get-sort">Get Sort</button>
-            <button class="btn" id="clear-base-btn">Clear base</button>
-            <button class="btn clear-all-inputs">Clear all inputs</button>
+        <div class="info-tabcontent fade">
+            <div class="container">
+                <h3>Chess</h3>
+                <label for="length">Length:</label>
+                <input type="text" id="length" placeholder="Even values" />
+                <label for="width">Width:</label>
+                <input type="text" id="width" placeholder="Even values" />
+                <label for="symbol">Symbol:</label>
+                <input type="text" id="symbol" />
+                <button class="btn chessBtn">Create chess</button>
+                <button class="btn clear-all-inputs">Clear all inputs</button>
+            </div>
+            <div class="root-chess"></div>
         </div>
-        <span id="root-triangles"></span>
-        <hr>
-        <div id="mocha"></div>
+        <div class="info-tabcontent fade">
+            <div class="container">
+                <h3>Triangle sorting</h3>
+                <label for="vertices">Vertices:</label>
+                <input type="text" id="vertices" placeholder="ZHO" />
+                <hr>
+                <label for="first-side-letter">First side:</label>
+                <input type="text" id="first-side-letter" placeholder="z" />
+                <label for="first-side-size">length:</label>
+                <input type="text" id="first-side-size" placeholder="13" />
+                <hr>
+                <label for="second-side-letter">Second side:</label>
+                <input type="text" id="second-side-letter" placeholder="h" />
+                <label for="second-side-size">length:</label>
+                <input type="text" id="second-side-size" placeholder="14" />
+                <hr>
+                <label for="third-side-letter">Third side:</label>
+                <input type="text" id="third-side-letter" placeholder="o" />
+                <label for="third-side-size">length:</label>
+                <input type="text" id="third-side-size" placeholder="15" />
+                <hr>
+                <button class="btn" id="get-sort">Get Sort</button>
+                <button class="btn" id="clear-base-btn">Clear base</button>
+                <button class="btn clear-all-inputs">Clear all inputs</button>
+            </div>
+            <div class="fs-28px">Result: </div>
+            <span id="root-triangles"></span>
+        </div>
+        <div class="info-tabcontent fade">
+            <div class="container">
+                <h3>Palindrome</h3>
+                <label for="value-palindrome">Number:</label>
+                <input type="text" id="value-palindrome" placeholder="max 100" />
+                <button class="btn palindromeBtn">Get a palindrome</button>
+                <button class="btn clear-all-inputs">Clear all inputs</button>
+            </div>
+            <div id="root-palindrome">Palindrome: </div>
+        </div>
+        <div class="info-tabcontent fade">
+            <div class="container">
+                <h3>Lucky tickets</h3>
+                <label for="min-value-tickets">Min:</label>
+                <input type="text" id="min-value-tickets" />
+                <label for="max-value-tickets">Max:</label>
+                <input type="text" id="max-value-tickets" />
+                <button class="btn btnTickets">Get results!</button>
+                <button class="btn clear-all-inputs">Clear all inputs</button>
+            </div>
+            <div id="root-tickets">Tickets: </div>
+        </div>
+        <div class="info-tabcontent fade">
+            <div class="container">
+                <h3>Numeric sequence</h3>
+                <label for="row-length-sequence">Length:</label>
+                <input type="text" id="row-length-sequence" />
+                <label for="square-value">Min square value:</label>
+                <input type="text" id="square-value" />
+                <button class="btn btnSequence">Get results!</button>
+                <button class="btn clear-all-inputs">Clear all inputs</button>
+            </div>
+            <div id="root-sequence">Sequence: </div>
+        </div>
     </div>
+    <script type="module" src="./main.js"></script>
 </body>
 
 </html>
