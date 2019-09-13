@@ -1,16 +1,16 @@
-import { isNumeric } from './isNumeric.js';
+import isNumeric from './isNumeric.js';
 
 export function checkParameters(initialObject) {
-  const maxLength = 1000000;
-
-  if (!initialObject) {
-    return {
-      status: 'failed',
-      reason: 'The parameters are empty. Enter a valid parameters',
-    };
-  }
+  const maxLength = 1000;
 
   if ({}.hasOwnProperty.call(initialObject, 'length')) {
+    if (!initialObject.length) {
+      return {
+        status: 'failed',
+        reason: 'The parameters are empty. Enter a valid parameters',
+      };
+    }
+
     if (!isNumeric(initialObject.length)) {
       return {
         status: 'failed',
@@ -28,10 +28,17 @@ export function checkParameters(initialObject) {
     if (initialObject.length > maxLength) {
       return {
         status: 'failed',
-        reason: 'Maximum length: 1.000.000',
+        reason: 'Maximum length: 1000',
       };
     }
   } else {
+    if (!initialObject.min || !initialObject.max) {
+      return {
+        status: 'failed',
+        reason: 'The parameters are empty. Enter a valid parameters',
+      };
+    }
+
     if (!isNumeric(initialObject.min) || !isNumeric(initialObject.max)) {
       return {
         status: 'failed',
@@ -39,7 +46,7 @@ export function checkParameters(initialObject) {
       };
     }
 
-    if (+initialObject.min > +initialObject.max) {
+    if (initialObject.min > initialObject.max) {
       return {
         status: 'failed',
         reason: 'Min parameter cannot be greater than max parameter',

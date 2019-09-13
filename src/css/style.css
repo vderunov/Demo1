@@ -34,7 +34,8 @@ label {
   width: 310px;
 }
 
-h3 {
+h3,
+h4 {
   margin: 0 0 5px 0;
   text-align: center;
 }
@@ -96,6 +97,8 @@ span,
 #root-triangles,
 #root-tickets,
 #root-sequence,
+#root-fib-length,
+#root-FibMinMax,
 .fs-28px {
   font-size: 22px;
 }

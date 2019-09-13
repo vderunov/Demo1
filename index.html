@@ -17,6 +17,7 @@
             <button class="btn btn-tabs info-header-tab">Palindrome</button>
             <button class="btn btn-tabs info-header-tab">Lucky tickets</button>
             <button class="btn btn-tabs info-header-tab">Numeric sequence</button>
+            <button class="btn btn-tabs info-header-tab">Fibonacci</button>
         </div>
         <div class="info-tabcontent fade">
             <div class="container">
@@ -93,6 +94,29 @@
                 <button class="btn clear-all-inputs">Clear all inputs</button>
             </div>
             <div id="root-sequence">Sequence: </div>
+        </div>
+        <div class="info-tabcontent fade">
+            <div class="wrap">
+                <div class="container">
+                    <h3>Fibonacci length</h3>
+                    <label for="fib-length">Length:</label>
+                    <input type="text" id="fib-length" />
+                    <button class="btn btnFibLength">Get results!</button>
+                    <button class="btn clear-all-inputs">Clear all inputs</button>
+                </div>
+                <div id="root-fib-length">Length: </div>
+
+                <div class="container">
+                    <h3>Fibonacci numbers range</h3>
+                    <label for="fib-min">Min:</label>
+                    <input type="text" id="fib-min" />
+                    <label for="fib-max">Max:</label>
+                    <input type="text" id="fib-max" />
+                    <button class="btn btnFibMinMax">Get results!</button>
+                    <button class="btn clear-all-inputs">Clear all inputs</button>
+                </div>
+                <div id="root-FibMinMax">Range of numbers: </div>
+            </div>
         </div>
     </div>
     <script type="module" src="./main.js"></script>

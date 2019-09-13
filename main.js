@@ -3,11 +3,13 @@ import makeTrianglesSorting from './src/task3.js';
 import getPalindrome from './src/task4.js';
 import luckyTicketCounting from './src/task5.js';
 import numericSequence from './src/task6.js';
+import { getFibonacci, getFibonacciSeries, getFibonacciMinMax } from './src/task7.js';
 import checkParamTask1 from './src/components/checkParamTask1.js';
 import checkParamTask3 from './src/components/checkParamTask3.js';
 import checkParamTask4 from './src/components/checkParamTask4.js';
 import checkParamTask5 from './src/components/checkParamTask5.js';
 import checkParamTask6 from './src/components/checkParamTask6.js';
+import checkParamTask7 from './src/components/checkParamTask7.js';
 import makeTabs from './src/components/tabs.js';
 import clearInputs from './src/components/clearAllInputs.js';
 
@@ -17,14 +19,12 @@ document.querySelector('#clear-base-btn').addEventListener('click', clearBase);
 document.querySelector('.palindromeBtn').addEventListener('click', showPalindrome);
 document.querySelector('.btnTickets').addEventListener('click', showLuckyTickets);
 document.querySelector('.btnSequence').addEventListener('click', showSequence);
+document.querySelector('.btnFibLength').addEventListener('click', showFibLength);
+document.querySelector('.btnFibMinMax').addEventListener('click', showFibRange);
 
-const tabs = (function initTabs() {
-  const info = document.querySelector('.info-header');
-  const tab = document.querySelectorAll('.info-header-tab');
-  const tabContent = document.querySelectorAll('.info-tabcontent');
+// tabs
 
-  makeTabs(info, tab, tabContent);
-}());
+makeTabs();
 
 // chess
 
@@ -164,6 +164,60 @@ function showSequence() {
   const span = document.createElement('span');
   span.innerHTML = numericSequence(rowLengthSequence, squareValue);
   rootSequence.append(span);
+
+  return span.innerHTML;
+}
+
+// Fibonacci
+
+function showFibLength() {
+  const fibLength = parseInt(document.querySelector('#fib-length').value, 10);
+  const rootFibLength = document.querySelector('#root-fib-length');
+  const context = {};
+
+  context.length = fibLength;
+
+  const parameterError = checkParamTask7(context);
+
+  if (parameterError) {
+    console.log(parameterError);
+    return parameterError;
+  }
+
+  if (rootFibLength.children[0]) {
+    rootFibLength.children[0].remove();
+  }
+
+  const span = document.createElement('span');
+  span.innerHTML = getFibonacci(context);
+  rootFibLength.append(span);
+
+  return span.innerHTML;
+}
+
+function showFibRange() {
+  const fibMin = parseInt(document.querySelector('#fib-min').value, 10);
+  const fibMax = parseInt(document.querySelector('#fib-max').value, 10);
+  const rootFibMinMax = document.querySelector('#root-FibMinMax');
+  const context = {};
+
+  context.min = fibMin;
+  context.max = fibMax;
+
+  const parameterError = checkParamTask7(context);
+
+  if (parameterError) {
+    console.log(parameterError);
+    return parameterError;
+  }
+
+  if (rootFibMinMax.children[0]) {
+    rootFibMinMax.children[0].remove();
+  }
+
+  const span = document.createElement('span');
+  span.innerHTML = getFibonacci(context);
+  rootFibMinMax.append(span);
 
   return span.innerHTML;
 }
