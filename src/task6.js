@@ -12,6 +12,7 @@ const numSequence = function numericSequence(rowLength, minAmountExponent) {
 
     i += 1;
   } while (arrNumbers.length < rowLength);
+
   return arrNumbers.join(', ');
 };
 

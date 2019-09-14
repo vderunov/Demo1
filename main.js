@@ -6,7 +6,7 @@ import numericSequence from './src/task6.js';
 import {
   getFibonacci,
   getFibonacciSeries,
-  getFibonacciMinMax
+  getFibonacciMinMax,
 } from './src/task7.js';
 import analyzeEnvelopes from './src/task2.js';
 import checkParamTask1 from './src/components/checkParamTask1.js';
@@ -18,12 +18,13 @@ import checkParamTask6 from './src/components/checkParamTask6.js';
 import checkParamTask7 from './src/components/checkParamTask7.js';
 import makeTabs from './src/components/tabs.js';
 import clearInputs from './src/components/clearAllInputs.js';
+import createNotification from './src/components/createNotification.js';
 
 const $ = function getElement(selector) {
   return document.querySelector(selector);
 };
 
-(function getButtons() {
+(function() {
   const btnList = [
     ['.btnChess', 'click', createChess],
     ['.btnGetSort', 'click', createBase],
@@ -33,7 +34,7 @@ const $ = function getElement(selector) {
     ['.btnSequence', 'click', showSequence],
     ['.btnFibLength', 'click', showFibLength],
     ['.btnFibMinMax', 'click', showFibRange],
-    ['.btnAnalyse', 'click', showAnalyzeEnvelopes]
+    ['.btnAnalyse', 'click', showAnalyzeEnvelopes],
   ];
 
   btnList.forEach(el => {
@@ -51,11 +52,18 @@ function createChess() {
   const length = $('#length').value;
   const width = $('#width').value;
   const symbol = $('#symbol').value;
-  const rootChess = $('.root-chess');
+  const rootChess = $('#root-chess');
   const errorMessage = checkParamTask1(length, width, symbol);
+  const notification = $('.notification-chess');
+
+  if (notification.firstChild) {
+    notification.children[0].remove();
+  }
 
   if (errorMessage) {
     console.log(errorMessage);
+    notification.append(createNotification(errorMessage));
+
     return errorMessage;
   }
 
@@ -81,11 +89,18 @@ function showAnalyzeEnvelopes() {
   envelopeA.height = parseFloat($('#height-env-a').value);
   envelopeB.width = parseFloat($('#width-env-b').value);
   envelopeB.height = parseFloat($('#height-env-b').value);
+  const notification = $('.notification-envelopes');
+
+  if (notification.firstChild) {
+    notification.children[0].remove();
+  }
 
   const errorMessage = checkParamTask2(envelopeA, envelopeB);
 
   if (errorMessage) {
     console.log(errorMessage);
+    notification.append(createNotification(errorMessage));
+
     return errorMessage;
   }
 
@@ -108,30 +123,38 @@ let arrTrianglesBase = [];
 
 function createBase() {
   const objTriangle = {};
+  const notification = $('.notification-triangles');
+
+  if (notification.firstChild) {
+    notification.children[0].remove();
+  }
 
   objTriangle.vertices = $('#vertices').value;
+
   objTriangle[$('#first-side-letter').value] = parseInt(
     $('#first-side-size').value,
-    10
+    10,
   );
   objTriangle[$('#second-side-letter').value] = parseInt(
     $('#second-side-size').value,
-    10
+    10,
   );
   objTriangle[$('#third-side-letter').value] = parseInt(
     $('#third-side-size').value,
-    10
+    10,
   );
 
   arrTrianglesBase.push(objTriangle);
-
   const errorMessage = checkParamTask3(arrTrianglesBase);
 
   if (errorMessage) {
     arrTrianglesBase = arrTrianglesBase.slice(0, arrTrianglesBase.length - 1);
     console.log(errorMessage);
+    notification.append(createNotification(errorMessage));
+
     return errorMessage;
   }
+
   $('#root-triangles').innerHTML = makeTrianglesSorting(arrTrianglesBase);
 
   return arrTrianglesBase;
@@ -147,9 +170,16 @@ function showPalindrome() {
   const valuePalindrome = $('#value-palindrome').value;
   const rootPalindrome = $('#root-palindrome');
   const errorMessage = checkParamTask4(valuePalindrome);
+  const notification = $('.notification-palindrome');
+
+  if (notification.firstChild) {
+    notification.children[0].remove();
+  }
 
   if (errorMessage) {
     console.log(errorMessage);
+    notification.append(createNotification(errorMessage));
+
     return errorMessage;
   }
 
@@ -171,6 +201,11 @@ function showLuckyTickets() {
   const min = $('#min-value-tickets').value;
   const max = $('#max-value-tickets').value;
   const rootTickets = $('#root-tickets');
+  const notification = $('.notification-tickets');
+
+  if (notification.firstChild) {
+    notification.children[0].remove();
+  }
 
   initialObject.min = min;
   initialObject.max = max;
@@ -179,6 +214,8 @@ function showLuckyTickets() {
 
   if (errorMessage) {
     console.log(errorMessage);
+    notification.append(createNotification(errorMessage));
+
     return errorMessage;
   }
 
@@ -201,9 +238,16 @@ function showSequence() {
   const squareValue = $('#square-value').value;
   const rootSequence = $('#root-sequence');
   const errorMessage = checkParamTask6(rowLengthSequence, squareValue);
+  const notification = $('.notification-sequence');
+
+  if (notification.firstChild) {
+    notification.children[0].remove();
+  }
 
   if (errorMessage) {
     console.log(errorMessage);
+    notification.append(createNotification(errorMessage));
+
     return errorMessage;
   }
 
@@ -224,13 +268,19 @@ function showFibLength() {
   const fibLength = parseInt($('#fib-length').value, 10);
   const rootFibLength = $('#root-fib-length');
   const context = {};
+  const notification = $('.notification-fib-length');
+
+  if (notification.firstChild) {
+    notification.children[0].remove();
+  }
 
   context.length = fibLength;
-
   const errorMessage = checkParamTask7(context);
 
   if (errorMessage) {
     console.log(errorMessage);
+    notification.append(createNotification(errorMessage));
+
     return errorMessage;
   }
 
@@ -238,18 +288,23 @@ function showFibLength() {
     rootFibLength.children[0].remove();
   }
 
-  const span = document.createElement('span');
-  span.innerHTML = getFibonacci(context);
-  rootFibLength.append(span);
+  const textarea = document.createElement('textarea');
+  textarea.innerHTML = getFibonacci(context);
+  rootFibLength.append(textarea);
 
-  return span.innerHTML;
+  return textarea.innerHTML;
 }
 
 function showFibRange() {
   const fibMin = parseInt($('#fib-min').value, 10);
   const fibMax = parseInt($('#fib-max').value, 10);
-  const rootFibMinMax = $('#root-FibMinMax');
+  const rootFibMinMax = $('#root-fibMinMax');
   const context = {};
+  const notification = $('.notification-fibMinMax');
+
+  if (notification.firstChild) {
+    notification.children[0].remove();
+  }
 
   context.min = fibMin;
   context.max = fibMax;
@@ -258,6 +313,8 @@ function showFibRange() {
 
   if (errorMessage) {
     console.log(errorMessage);
+    notification.append(createNotification(errorMessage));
+
     return errorMessage;
   }
 

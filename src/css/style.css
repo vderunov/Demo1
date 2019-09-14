@@ -29,7 +29,7 @@ label {
 
 .container {
   border: 1px solid;
-  margin: 5px;
+  margin-top: 5px;
   padding: 5px;
   width: 310px;
 }
@@ -98,19 +98,31 @@ pre {
 }
 
 span,
-#root-palindrome,
-#root-triangles,
-#root-tickets,
-#root-sequence,
-#root-fib-length,
-#root-FibMinMax,
-#root-envelopes,
-.fs-28px {
-  font-size: 22px;
+.fs-20px {
+  font-size: 20px;
 }
 
 .wrap {
   display: flex;
   justify-content: center;
   margin: 10px;
+}
+
+.notification {
+  position: absolute;
+  color: red;
+  font-size: 16px;
+  padding: 5px;
+}
+
+.notification-fib-length {
+  color: red;
+  font-size: 16px;
+  padding: 5px;
+}
+
+textarea {
+  width: 100%;
+  display: flex;
+  font-size: 14px;
 }

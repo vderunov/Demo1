@@ -7,14 +7,14 @@ const checkTask = function checkParameters(rowLength, minAmountExponent) {
   if (!rowLength && !minAmountExponent) {
     return {
       status: 'failed',
-      reason: 'The parameters are empty. Enter a valid parameters'
+      reason: 'The parameters are empty. Enter a valid parameters',
     };
   }
 
   if (!rowLength) {
     return {
       status: 'failed',
-      reason: 'Error entering parameters. Missing first parameter: length'
+      reason: 'Error entering parameters. Missing first parameter: length',
     };
   }
 
@@ -22,37 +22,38 @@ const checkTask = function checkParameters(rowLength, minAmountExponent) {
     return {
       status: 'failed',
       reason:
-        'Error entering parameters. Missing second parameter: min exponent'
+        'Error entering parameters. Missing second parameter: min exponent',
     };
   }
 
   if (minAmountExponent > maxExponentValue) {
     return {
       status: 'failed',
-      reason: 'Min square value: max 1000000'
+      reason: 'Min square value: max 1000000',
     };
   }
 
   if (!isNumeric(rowLength) || !isNumeric(minAmountExponent)) {
     return {
       status: 'failed',
-      reason: 'Error entering parameters. Parameters must be numbers'
+      reason: 'Error entering parameters. Parameters must be numbers',
     };
   }
 
   if (rowLength > maxLength) {
     return {
       status: 'failed',
-      reason: 'Error entering parameters. Maximum length 500'
+      reason: 'Error entering parameters. Maximum length 500',
     };
   }
 
   if (rowLength < 0 || minAmountExponent < 0) {
     return {
       status: 'failed',
-      reason: 'Error entering parameters. Parameters must be positive'
+      reason: 'Error entering parameters. Parameters must be positive',
     };
   }
+
   return false;
 };
 

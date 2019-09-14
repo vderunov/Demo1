@@ -7,9 +7,9 @@ const test5 = function makeTestsForTask5(assert) {
       assert.typeOf(
         luckyTicketCounting({
           min: '326323',
-          max: '641235'
+          max: '641235',
         }),
-        'object'
+        'object',
       );
     });
 
@@ -20,14 +20,14 @@ const test5 = function makeTestsForTask5(assert) {
         arguments: [
           {
             min: '233456',
-            max: '554321'
-          }
+            max: '554321',
+          },
         ],
         result: {
           easy: 19536,
           hard: 18528,
-          winner: 'Winner: Easy way to count'
-        }
+          winner: 'Winner: Easy way to count',
+        },
       },
       {
         description:
@@ -35,14 +35,14 @@ const test5 = function makeTestsForTask5(assert) {
         arguments: [
           {
             min: '000100',
-            max: '500500'
-          }
+            max: '500500',
+          },
         ],
         result: {
           easy: 27646,
           hard: 27652,
-          winner: 'Winner: Hard way to count'
-        }
+          winner: 'Winner: Hard way to count',
+        },
       },
       {
         description:
@@ -50,14 +50,14 @@ const test5 = function makeTestsForTask5(assert) {
         arguments: [
           {
             min: '000000',
-            max: '999999'
-          }
+            max: '999999',
+          },
         ],
         result: {
           easy: 55252,
           hard: 55252,
-          winner: 'Winner: Hard way to count'
-        }
+          winner: 'Winner: Hard way to count',
+        },
       },
       {
         description:
@@ -65,15 +65,15 @@ const test5 = function makeTestsForTask5(assert) {
         arguments: [
           {
             min: '123456',
-            max: '654321'
-          }
+            max: '654321',
+          },
         ],
         result: {
           easy: 31607,
           hard: 30213,
-          winner: 'Winner: Easy way to count'
-        }
-      }
+          winner: 'Winner: Easy way to count',
+        },
+      },
     ];
 
     valid.forEach(el => {
@@ -89,16 +89,17 @@ const test5 = function makeTestsForTask5(assert) {
           arguments: [{ min: '', max: '' }],
           result: {
             status: 'failed',
-            reason: 'Empty parameters: enter parameters min and max'
-          }
+            reason: 'Empty parameters: enter parameters min and max',
+          },
         },
         {
           description: 'Min more max: ({ min: 654321 , max:123456  })',
           arguments: [{ min: '654321', max: '123456' }],
           result: {
             status: 'failed',
-            reason: 'The min property must not be greater than the max property'
-          }
+            reason:
+              'The min property must not be greater than the max property',
+          },
         },
         {
           description: 'Max value 999999: ({ min: 1999999 , max:123456  })',
@@ -106,8 +107,8 @@ const test5 = function makeTestsForTask5(assert) {
           result: {
             status: 'failed',
             reason:
-              'The maximum allowable value of the min and max properties is 999999'
-          }
+              'The maximum allowable value of the min and max properties is 999999',
+          },
         },
         {
           description: 'Max value 999999: ({ min: 123456 , max:1999999  })',
@@ -115,16 +116,16 @@ const test5 = function makeTestsForTask5(assert) {
           result: {
             status: 'failed',
             reason:
-              'The maximum allowable value of the min and max properties is 999999'
-          }
+              'The maximum allowable value of the min and max properties is 999999',
+          },
         },
         {
           description: 'Only numbers expected: ({ min: 1234tY , max:123456  })',
           arguments: [{ min: '1234tY', max: '123456' }],
           result: {
             status: 'failed',
-            reason: 'Only numbers expected'
-          }
+            reason: 'Only numbers expected',
+          },
         },
         {
           description:
@@ -132,9 +133,9 @@ const test5 = function makeTestsForTask5(assert) {
           arguments: [{ min: '1234tY', max: '7#*&$Q' }],
           result: {
             status: 'failed',
-            reason: 'Only numbers expected'
-          }
-        }
+            reason: 'Only numbers expected',
+          },
+        },
       ];
 
       error.forEach(el => {

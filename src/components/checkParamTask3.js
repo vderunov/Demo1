@@ -5,14 +5,14 @@ const checkTask3 = function checkParameters(arrTriangles) {
     return {
       status: 'failed',
       reason:
-        'The parameters is empty. Enter an array of triangles represented by objects'
+        'The parameters is empty. Enter an array of triangles represented by objects',
     };
   }
 
   if (!Array.isArray(arrTriangles)) {
     return {
       status: 'failed',
-      reason: 'Expected parameter array of objects in parameters'
+      reason: 'Expected parameter array of objects in parameters',
     };
   }
 
@@ -26,35 +26,35 @@ const checkTask3 = function checkParameters(arrTriangles) {
     if (typeof arrTriangles[i] !== 'object') {
       return {
         status: 'failed',
-        reason: 'Array elements must be objects with properties'
+        reason: 'Array elements must be objects with properties',
       };
     }
 
     if (Object.entries(arrTriangles[i]).length === 0) {
       return {
         status: 'failed',
-        reason: 'Object is empty, enter properties'
+        reason: 'Object is empty, enter properties',
       };
     }
 
     if (!isNumeric(a) || !isNumeric(b) || !isNumeric(c)) {
       return {
         status: 'failed',
-        reason: 'The sides of the triangle must be numbers'
+        reason: 'The sides of the triangle must be numbers',
       };
     }
 
     if (vertices === '') {
       return {
         status: 'failed',
-        reason: 'Pick the vertices of the triangle'
+        reason: 'Pick the vertices of the triangle',
       };
     }
 
     if (a + b <= c || a + c <= b || b + c <= a) {
       return {
         status: 'failed',
-        reason: 'Triangle does not exist. Check side sizes'
+        reason: 'Triangle does not exist. Check side sizes',
       };
     }
 
@@ -68,7 +68,7 @@ const checkTask3 = function checkParameters(arrTriangles) {
       return {
         status: 'failed',
         reason:
-          'A triangle is defined by its vertices, check the letters and case'
+          'A triangle is defined by its vertices, check the letters and case',
       };
     }
 
@@ -79,7 +79,7 @@ const checkTask3 = function checkParameters(arrTriangles) {
     ) {
       return {
         status: 'failed',
-        reason: 'Vertices and sides must be different register'
+        reason: 'Vertices and sides must be different register',
       };
     }
 
@@ -90,10 +90,11 @@ const checkTask3 = function checkParameters(arrTriangles) {
     ) {
       return {
         status: 'failed',
-        reason: 'The lengths of the parties must be numbers'
+        reason: 'The lengths of the parties must be numbers',
       };
     }
   }
+
   return false;
 };
 

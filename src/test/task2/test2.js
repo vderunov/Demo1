@@ -7,8 +7,8 @@ const test2 = function makeTestsForTask2(assert) {
       {
         description: 'Sides of envelope A are larger than sides of envelope B',
         arguments: [{ width: 10, height: 11 }, { width: 9, height: 10 }],
-        result: '0'
-      }
+        result: '0',
+      },
     ];
 
     valid.forEach(el => {
@@ -25,8 +25,9 @@ const test2 = function makeTestsForTask2(assert) {
           arguments: [{ width: 'a10', height: 11 }, { width: 9, height: 10 }],
           result: {
             status: 'failed',
-            reason: 'The wrong param width of the envelope-A. Enter the numbers'
-          }
+            reason:
+              'The wrong param width of the envelope-A. Enter the numbers',
+          },
         },
         {
           description:
@@ -34,8 +35,9 @@ const test2 = function makeTestsForTask2(assert) {
           arguments: [{ width: 'a10', height: 11 }, { width: 9, height: 10 }],
           result: {
             status: 'failed',
-            reason: 'The wrong param width of the envelope-A. Enter the numbers'
-          }
+            reason:
+              'The wrong param width of the envelope-A. Enter the numbers',
+          },
         },
         {
           description:
@@ -43,21 +45,22 @@ const test2 = function makeTestsForTask2(assert) {
           arguments: [{ width: 10, height: 11 }, { width: 'a10', height: 12 }],
           result: {
             status: 'failed',
-            reason: 'The wrong param width of the envelope-B. Enter the numbers'
-          }
+            reason:
+              'The wrong param width of the envelope-B. Enter the numbers',
+          },
         },
         {
           description:
             'Wrong width: { width: 10, height: 11 }, { width: , height: JKO12 }',
           arguments: [
             { width: 10, height: 11 },
-            { width: 10, height: 'JKO12' }
+            { width: 10, height: 'JKO12' },
           ],
           result: {
             status: 'failed',
             reason:
-              'The wrong param height of the envelope-B. Enter the numbers'
-          }
+              'The wrong param height of the envelope-B. Enter the numbers',
+          },
         },
         {
           description:
@@ -65,8 +68,8 @@ const test2 = function makeTestsForTask2(assert) {
           arguments: [{ width: 10, height: 10 }, { width: 10, height: 10 }],
           result: {
             status: 'failed',
-            reason: 'Width cannot match height'
-          }
+            reason: 'Width cannot match height',
+          },
         },
         {
           description:
@@ -74,8 +77,8 @@ const test2 = function makeTestsForTask2(assert) {
           arguments: [{ width: -6, height: 12 }, { width: 10, height: 11 }],
           result: {
             status: 'failed',
-            reason: 'Attention envelope A. Expected width between 1 - 50'
-          }
+            reason: 'Attention envelope A. Expected width between 1 - 50',
+          },
         },
         {
           description:
@@ -83,8 +86,8 @@ const test2 = function makeTestsForTask2(assert) {
           arguments: [{ width: 5, height: -9 }, { width: 10, height: 11 }],
           result: {
             status: 'failed',
-            reason: 'Attention envelope A. Expected height between 1 - 50'
-          }
+            reason: 'Attention envelope A. Expected height between 1 - 50',
+          },
         },
         {
           description:
@@ -92,8 +95,8 @@ const test2 = function makeTestsForTask2(assert) {
           arguments: [{ width: 5, height: 10 }, { width: -7, height: 11 }],
           result: {
             status: 'failed',
-            reason: 'Attention envelope B. Expected width between 1 - 50'
-          }
+            reason: 'Attention envelope B. Expected width between 1 - 50',
+          },
         },
         {
           description:
@@ -101,9 +104,9 @@ const test2 = function makeTestsForTask2(assert) {
           arguments: [{ width: 5, height: 10 }, { width: 7, height: -90 }],
           result: {
             status: 'failed',
-            reason: 'Attention envelope B. Expected height between 1 - 50'
-          }
-        }
+            reason: 'Attention envelope B. Expected height between 1 - 50',
+          },
+        },
       ];
 
       error.forEach(el => {

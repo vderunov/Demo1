@@ -10,10 +10,10 @@ const test3 = function makeTestsForTask3(assert) {
             vertices: 'ABC',
             a: 10,
             b: 20,
-            c: 22.36
-          }
+            c: 22.36,
+          },
         ]),
-        'array'
+        'array',
       );
     });
 
@@ -26,10 +26,10 @@ const test3 = function makeTestsForTask3(assert) {
               vertices: 'ABC',
               a: 6,
               b: 10,
-              c: 12.07
-            }
+              c: 12.07,
+            },
           ],
-          result: ['ABC']
+          result: ['ABC'],
         },
         {
           description:
@@ -39,16 +39,16 @@ const test3 = function makeTestsForTask3(assert) {
               vertices: 'QWE',
               a: 32,
               b: 12,
-              c: 24
+              c: 24,
             },
             {
               vertices: 'ZXC',
               a: 11,
               b: 17,
-              c: 21
-            }
+              c: 21,
+            },
           ],
-          result: ['QWE', 'ZXC']
+          result: ['QWE', 'ZXC'],
         },
         {
           description:
@@ -58,23 +58,23 @@ const test3 = function makeTestsForTask3(assert) {
               vertices: 'DEV',
               d: 13,
               e: 14,
-              v: 15
+              v: 15,
             },
             {
               vertices: 'IKL',
               i: 9,
               k: 12,
-              l: 13.65
+              l: 13.65,
             },
             {
               vertices: 'ABC',
               a: 6,
               b: 10,
-              c: 12.07
-            }
+              c: 12.07,
+            },
           ],
-          result: ['DEV', 'IKL', 'ABC']
-        }
+          result: ['DEV', 'IKL', 'ABC'],
+        },
       ];
 
       valid.forEach(el => {
@@ -93,13 +93,13 @@ const test3 = function makeTestsForTask3(assert) {
               vertices: 'DEV',
               d: 13,
               e: 'a',
-              v: 15
-            }
+              v: 15,
+            },
           ],
           result: {
             status: 'failed',
-            reason: 'The sides of the triangle must be numbers'
-          }
+            reason: 'The sides of the triangle must be numbers',
+          },
         },
         {
           description: 'The sides must be numbers: {a: a, e: 13, v: 15}',
@@ -108,13 +108,13 @@ const test3 = function makeTestsForTask3(assert) {
               vertices: 'DEV',
               d: 'a',
               e: 13,
-              v: 15
-            }
+              v: 15,
+            },
           ],
           result: {
             status: 'failed',
-            reason: 'The sides of the triangle must be numbers'
-          }
+            reason: 'The sides of the triangle must be numbers',
+          },
         },
         {
           description: 'The sides must be numbers: {a: 13, e: 15, v: e}',
@@ -123,13 +123,13 @@ const test3 = function makeTestsForTask3(assert) {
               vertices: 'DEV',
               d: 13,
               e: 15,
-              v: 'a'
-            }
+              v: 'a',
+            },
           ],
           result: {
             status: 'failed',
-            reason: 'The sides of the triangle must be numbers'
-          }
+            reason: 'The sides of the triangle must be numbers',
+          },
         },
         {
           description: 'The sides must be numbers: {a: 13, e: ___%$!#@, v: e}',
@@ -138,13 +138,13 @@ const test3 = function makeTestsForTask3(assert) {
               vertices: 'DEV',
               d: '___%$!#@',
               e: 15,
-              v: 16
-            }
+              v: 16,
+            },
           ],
           result: {
             status: 'failed',
-            reason: 'The sides of the triangle must be numbers'
-          }
+            reason: 'The sides of the triangle must be numbers',
+          },
         },
         {
           description:
@@ -154,14 +154,14 @@ const test3 = function makeTestsForTask3(assert) {
               vertices: 'ABC',
               Y: 13,
               b: 14,
-              c: 15
-            }
+              c: 15,
+            },
           ],
           result: {
             status: 'failed',
             reason:
-              'A triangle is defined by its vertices, check the letters and case'
-          }
+              'A triangle is defined by its vertices, check the letters and case',
+          },
         },
         {
           description:
@@ -171,14 +171,14 @@ const test3 = function makeTestsForTask3(assert) {
               vertices: 'ABC',
               a: 13,
               M: 14,
-              c: 15
-            }
+              c: 15,
+            },
           ],
           result: {
             status: 'failed',
             reason:
-              'A triangle is defined by its vertices, check the letters and case'
-          }
+              'A triangle is defined by its vertices, check the letters and case',
+          },
         },
         {
           description:
@@ -188,14 +188,14 @@ const test3 = function makeTestsForTask3(assert) {
               vertices: 'ABC',
               a: 13,
               b: 14,
-              M: 15
-            }
+              M: 15,
+            },
           ],
           result: {
             status: 'failed',
             reason:
-              'A triangle is defined by its vertices, check the letters and case'
-          }
+              'A triangle is defined by its vertices, check the letters and case',
+          },
         },
         {
           description:
@@ -205,13 +205,13 @@ const test3 = function makeTestsForTask3(assert) {
               vertices: 'ABC',
               a: 5,
               b: 30,
-              c: 35
-            }
+              c: 35,
+            },
           ],
           result: {
             status: 'failed',
-            reason: 'Triangle does not exist. Check side sizes'
-          }
+            reason: 'Triangle does not exist. Check side sizes',
+          },
         },
         {
           description:
@@ -221,13 +221,13 @@ const test3 = function makeTestsForTask3(assert) {
               vertices: 'ABC',
               a: 0,
               b: 0,
-              c: 0
-            }
+              c: 0,
+            },
           ],
           result: {
             status: 'failed',
-            reason: 'Triangle does not exist. Check side sizes'
-          }
+            reason: 'Triangle does not exist. Check side sizes',
+          },
         },
         {
           description:
@@ -237,13 +237,13 @@ const test3 = function makeTestsForTask3(assert) {
               vertices: 'ABC',
               a: 100,
               b: 17,
-              c: 9
-            }
+              c: 9,
+            },
           ],
           result: {
             status: 'failed',
-            reason: 'Triangle does not exist. Check side sizes'
-          }
+            reason: 'Triangle does not exist. Check side sizes',
+          },
         },
         {
           description:
@@ -253,13 +253,13 @@ const test3 = function makeTestsForTask3(assert) {
               vertices: 'ABC',
               a: 1,
               b: 2,
-              c: 3
-            }
+              c: 3,
+            },
           ],
           result: {
             status: 'failed',
-            reason: 'Triangle does not exist. Check side sizes'
-          }
+            reason: 'Triangle does not exist. Check side sizes',
+          },
         },
         {
           description:
@@ -269,13 +269,13 @@ const test3 = function makeTestsForTask3(assert) {
               vertices: 'ABC',
               A: 13,
               b: 14,
-              c: 15
-            }
+              c: 15,
+            },
           ],
           result: {
             status: 'failed',
-            reason: 'Vertices and sides must be different register'
-          }
+            reason: 'Vertices and sides must be different register',
+          },
         },
         {
           description:
@@ -285,13 +285,13 @@ const test3 = function makeTestsForTask3(assert) {
               vertices: 'ABC',
               a: 13,
               B: 14,
-              c: 15
-            }
+              c: 15,
+            },
           ],
           result: {
             status: 'failed',
-            reason: 'Vertices and sides must be different register'
-          }
+            reason: 'Vertices and sides must be different register',
+          },
         },
         {
           description:
@@ -301,14 +301,14 @@ const test3 = function makeTestsForTask3(assert) {
               vertices: 'ABC',
               a: 13,
               b: 14,
-              C: 15
-            }
+              C: 15,
+            },
           ],
           result: {
             status: 'failed',
-            reason: 'Vertices and sides must be different register'
-          }
-        }
+            reason: 'Vertices and sides must be different register',
+          },
+        },
       ];
 
       error.forEach(el => {

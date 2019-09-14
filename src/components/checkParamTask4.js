@@ -7,28 +7,28 @@ const checkTask4 = function checkParameters(initialNumber) {
   if (!initialNumber) {
     return {
       status: 'failed',
-      reason: 'Parameters are missing. Enter valid parameters'
+      reason: 'Parameters are missing. Enter valid parameters',
     };
   }
 
   if (!isNumeric(initialNumber)) {
     return {
       status: 'failed',
-      reason: 'The parameter is not entered correctly. Expected number'
+      reason: 'The parameter is not entered correctly. Expected number',
     };
   }
 
   if (initialNumber.length < minLengthParam) {
     return {
       status: 'failed',
-      reason: 'The parameter must be greater than 10'
+      reason: 'The parameter must be greater than 10',
     };
   }
 
   if (initialNumber.length > maxLengthParam) {
     return {
       status: 'failed',
-      reason: 'The parameter must be less than 100 symbols'
+      reason: 'The parameter must be less than 100 symbols',
     };
   }
 
@@ -41,6 +41,7 @@ const checkTask4 = function checkParameters(initialNumber) {
       return { status: 'failed', reason: 'Enter only numbers' };
     }
   }
+
   return false;
 };
 

@@ -12,12 +12,12 @@ const test1 = function makeTestsForTask1(assert) {
         {
           description: 'With parameters: (4, 4, *)',
           arguments: [4, 4, '*'],
-          result: ' * *\n' + '* * \n' + ' * *\n' + '* * \n'
+          result: ' * *\n' + '* * \n' + ' * *\n' + '* * \n',
         },
         {
           description: 'With parameters: (4, 4, *)',
           arguments: [4, 4, '*'],
-          result: ' * *\n' + '* * \n' + ' * *\n' + '* * \n'
+          result: ' * *\n' + '* * \n' + ' * *\n' + '* * \n',
         },
         {
           description: 'With parameters: (6, 6, *)',
@@ -28,7 +28,7 @@ const test1 = function makeTestsForTask1(assert) {
             ' * * *\n' +
             '* * * \n' +
             ' * * *\n' +
-            '* * * \n'
+            '* * * \n',
         },
         {
           description: 'With parameters: (8, 8, *)',
@@ -41,8 +41,8 @@ const test1 = function makeTestsForTask1(assert) {
             ' * * * *\n' +
             '* * * * \n' +
             ' * * * *\n' +
-            '* * * * \n'
-        }
+            '* * * * \n',
+        },
       ];
 
       valid.forEach(el => {
@@ -60,8 +60,8 @@ const test1 = function makeTestsForTask1(assert) {
           result: {
             status: 'failed',
             reason:
-              'Not enough parameters. Expected parameters: 1. Number, 2. Number, 3. String'
-          }
+              'Not enough parameters. Expected parameters: 1. Number, 2. Number, 3. String',
+          },
         },
         {
           description: 'Not enough parameters: (10, 10)',
@@ -69,8 +69,8 @@ const test1 = function makeTestsForTask1(assert) {
           result: {
             status: 'failed',
             reason:
-              'Not enough parameters. Expected parameters: 1. Number, 2. Number, 3. String'
-          }
+              'Not enough parameters. Expected parameters: 1. Number, 2. Number, 3. String',
+          },
         },
         {
           description: 'Not enough parameters: (10, *)',
@@ -78,56 +78,56 @@ const test1 = function makeTestsForTask1(assert) {
           result: {
             status: 'failed',
             reason:
-              'Not enough parameters. Expected parameters: 1. Number, 2. Number, 3. String'
-          }
+              'Not enough parameters. Expected parameters: 1. Number, 2. Number, 3. String',
+          },
         },
         {
           description: 'Negative length: (-1, 10, *)',
           arguments: [-1, 10, '*'],
           result: {
             status: 'failed',
-            reason: 'Length and width cannot be negative'
-          }
+            reason: 'Length and width cannot be negative',
+          },
         },
         {
           description: 'Negative width: (10, -1, *)',
           arguments: [10, -1, '*'],
           result: {
             status: 'failed',
-            reason: 'Length and width cannot be negative'
-          }
+            reason: 'Length and width cannot be negative',
+          },
         },
         {
           description: 'Length = 0: (0, 10, *)',
           arguments: ['0', 10, '*'],
           result: {
             status: 'failed',
-            reason: 'Length and width cannot be 0'
-          }
+            reason: 'Length and width cannot be 0',
+          },
         },
         {
           description: 'Width = 0: (10, 0, *)',
           arguments: [10, '0', '*'],
           result: {
             status: 'failed',
-            reason: 'Length and width cannot be 0'
-          }
+            reason: 'Length and width cannot be 0',
+          },
         },
         {
           description: 'Width = 0: (7, 10, *)',
           arguments: [7, 10, '*'],
           result: {
             status: 'failed',
-            reason: 'Width and length must be equal'
-          }
+            reason: 'Width and length must be equal',
+          },
         },
         {
           description: 'Width and length must be equal: (10, 7, *)',
           arguments: [10, 7, '*'],
           result: {
             status: 'failed',
-            reason: 'Width and length must be equal'
-          }
+            reason: 'Width and length must be equal',
+          },
         },
         {
           description:
@@ -135,8 +135,8 @@ const test1 = function makeTestsForTask1(assert) {
           arguments: [10, 10, '**'],
           result: {
             status: 'failed',
-            reason: 'Expected only one character (example: "*")'
-          }
+            reason: 'Expected only one character (example: "*")',
+          },
         },
         {
           description:
@@ -144,8 +144,8 @@ const test1 = function makeTestsForTask1(assert) {
           arguments: [10, '*', '*'],
           result: {
             status: 'failed',
-            reason: 'The first and second parameters must be numbers'
-          }
+            reason: 'The first and second parameters must be numbers',
+          },
         },
         {
           description:
@@ -153,33 +153,33 @@ const test1 = function makeTestsForTask1(assert) {
           arguments: ['*', 10, '*'],
           result: {
             status: 'failed',
-            reason: 'The first and second parameters must be numbers'
-          }
+            reason: 'The first and second parameters must be numbers',
+          },
         },
         {
           description: 'The symbol  = empty string: (10, 10, " ")',
           arguments: [10, 10, ' '],
           result: {
             status: 'failed',
-            reason: 'The symbol cannot be an empty string'
-          }
+            reason: 'The symbol cannot be an empty string',
+          },
         },
         {
           description: 'Maximum board size 50 x 50. (55, 55, *)',
           arguments: [55, 55, '*'],
           result: {
             status: 'failed',
-            reason: 'Maximum board size 50 x 50'
-          }
+            reason: 'Maximum board size 50 x 50',
+          },
         },
         {
           description: 'Length and width must be even: (3, 3, *)',
           arguments: [3, 3, '*'],
           result: {
             status: 'failed',
-            reason: 'Length and width must be even: (3, 3, *)'
-          }
-        }
+            reason: 'Length and width must be even: (3, 3, *)',
+          },
+        },
       ];
 
       error.forEach(el => {
