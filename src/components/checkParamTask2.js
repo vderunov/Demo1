@@ -1,6 +1,46 @@
 import isNumeric from './isNumeric.js';
 
-export function checkParameters(envelopeA, envelopeB) {
+const checkTask4 = function checkParameters(envelopeA, envelopeB) {
+  if (
+    envelopeA.width === '' &&
+    envelopeA.height === '' &&
+    envelopeB.width === '' &&
+    envelopeB.height === ''
+  ) {
+    return {
+      status: 'failed',
+      reason: 'Empty parameters. Enter valid parameters',
+    };
+  }
+
+  if (envelopeA.width === '') {
+    return {
+      status: 'failed',
+      reason: 'Envelope A width is missing',
+    };
+  }
+
+  if (envelopeA.height === '') {
+    return {
+      status: 'failed',
+      reason: 'Envelope A height is missing',
+    };
+  }
+
+  if (envelopeB.width === '') {
+    return {
+      status: 'failed',
+      reason: 'Envelope B width is missing',
+    };
+  }
+
+  if (envelopeB.height === '') {
+    return {
+      status: 'failed',
+      reason: 'Envelope B height is missing',
+    };
+  }
+
   if (!isNumeric(envelopeA.width)) {
     return {
       status: 'failed',
@@ -68,6 +108,6 @@ export function checkParameters(envelopeA, envelopeB) {
   }
 
   return false;
-}
+};
 
-export default checkParameters;
+export default checkTask4;

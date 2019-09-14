@@ -1,14 +1,6 @@
 import isNumeric from './isNumeric.js';
 
 const checkTask3 = function checkParameters(arrTriangles) {
-  if (!arrTriangles) {
-    return {
-      status: 'failed',
-      reason:
-        'The parameters is empty. Enter an array of triangles represented by objects',
-    };
-  }
-
   if (!Array.isArray(arrTriangles)) {
     return {
       status: 'failed',
@@ -22,6 +14,13 @@ const checkTask3 = function checkParameters(arrTriangles) {
 
   for (let i = 0; i < arrTriangles.length; i += 1) {
     const [vertices, a, b, c] = Object.values(arrTriangles[i]);
+
+    if (vertices === '' || a === '' || b === '' || c === '') {
+      return {
+        status: 'failed',
+        reason: 'Empty parameter. All fields must be filled!',
+      };
+    }
 
     if (typeof arrTriangles[i] !== 'object') {
       return {
@@ -44,14 +43,7 @@ const checkTask3 = function checkParameters(arrTriangles) {
       };
     }
 
-    if (vertices === '') {
-      return {
-        status: 'failed',
-        reason: 'Pick the vertices of the triangle',
-      };
-    }
-
-    if (a + b <= c || a + c <= b || b + c <= a) {
+    if (+a + +b <= +c || +a + +c <= +b || +b + +c <= +a) {
       return {
         status: 'failed',
         reason: 'Triangle does not exist. Check side sizes',
@@ -84,9 +76,9 @@ const checkTask3 = function checkParameters(arrTriangles) {
     }
 
     if (
-      typeof arrTriangles[i][keyOne] !== 'number' ||
-      typeof arrTriangles[i][keyTwo] !== 'number' ||
-      typeof arrTriangles[i][keyThree] !== 'number'
+      typeof +arrTriangles[i][keyOne] !== 'number' ||
+      typeof +arrTriangles[i][keyTwo] !== 'number' ||
+      typeof +arrTriangles[i][keyThree] !== 'number'
     ) {
       return {
         status: 'failed',

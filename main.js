@@ -24,31 +24,13 @@ const $ = function getElement(selector) {
   return document.querySelector(selector);
 };
 
-(function() {
-  const btnList = [
-    ['.btnChess', 'click', createChess],
-    ['.btnGetSort', 'click', createBase],
-    ['.btnClearBase', 'click', clearBase],
-    ['.btnPalindrome', 'click', showPalindrome],
-    ['.btnTickets', 'click', showLuckyTickets],
-    ['.btnSequence', 'click', showSequence],
-    ['.btnFibLength', 'click', showFibLength],
-    ['.btnFibMinMax', 'click', showFibRange],
-    ['.btnAnalyse', 'click', showAnalyzeEnvelopes],
-  ];
-
-  btnList.forEach(el => {
-    $(el[0]).addEventListener(el[1], el[2]);
-  });
-})();
-
 // tabs
 
 makeTabs();
 
 // chess
 
-function createChess() {
+const task1 = function createChess() {
   const length = $('#length').value;
   const width = $('#width').value;
   const symbol = $('#symbol').value;
@@ -76,19 +58,19 @@ function createChess() {
   rootChess.append(pre);
 
   return pre.innerHTML;
-}
+};
 
 // analyze envelopes
 
-function showAnalyzeEnvelopes() {
+const task2 = function showAnalyzeEnvelopes() {
   const rootEnvelopes = $('#root-envelopes');
   const envelopeA = {};
   const envelopeB = {};
 
-  envelopeA.width = parseFloat($('#width-env-a').value);
-  envelopeA.height = parseFloat($('#height-env-a').value);
-  envelopeB.width = parseFloat($('#width-env-b').value);
-  envelopeB.height = parseFloat($('#height-env-b').value);
+  envelopeA.width = $('#width-env-a').value;
+  envelopeA.height = $('#height-env-a').value;
+  envelopeB.width = $('#width-env-b').value;
+  envelopeB.height = $('#height-env-b').value;
   const notification = $('.notification-envelopes');
 
   if (notification.firstChild) {
@@ -115,13 +97,13 @@ function showAnalyzeEnvelopes() {
   rootEnvelopes.append(span);
 
   return span.innerHTML;
-}
+};
 
 // triangles sorting
 
 let arrTrianglesBase = [];
 
-function createBase() {
+const task3 = function showTrianglesSort() {
   const objTriangle = {};
   const notification = $('.notification-triangles');
 
@@ -130,19 +112,9 @@ function createBase() {
   }
 
   objTriangle.vertices = $('#vertices').value;
-
-  objTriangle[$('#first-side-letter').value] = parseInt(
-    $('#first-side-size').value,
-    10,
-  );
-  objTriangle[$('#second-side-letter').value] = parseInt(
-    $('#second-side-size').value,
-    10,
-  );
-  objTriangle[$('#third-side-letter').value] = parseInt(
-    $('#third-side-size').value,
-    10,
-  );
+  objTriangle[$('#first-side-letter').value] = $('#first-side-size').value;
+  objTriangle[$('#second-side-letter').value] = $('#second-side-size').value;
+  objTriangle[$('#third-side-letter').value] = $('#third-side-size').value;
 
   arrTrianglesBase.push(objTriangle);
   const errorMessage = checkParamTask3(arrTrianglesBase);
@@ -158,15 +130,15 @@ function createBase() {
   $('#root-triangles').innerHTML = makeTrianglesSorting(arrTrianglesBase);
 
   return arrTrianglesBase;
-}
+};
 
-function clearBase() {
+const clearBase = function clearBaseOfTriangles() {
   arrTrianglesBase = [];
-}
+};
 
 // palindrome
 
-function showPalindrome() {
+const task4 = function showPalindrome() {
   const valuePalindrome = $('#value-palindrome').value;
   const rootPalindrome = $('#root-palindrome');
   const errorMessage = checkParamTask4(valuePalindrome);
@@ -192,11 +164,11 @@ function showPalindrome() {
   rootPalindrome.append(span);
 
   return span.innerHTML;
-}
+};
 
 // lucky tickets
 
-function showLuckyTickets() {
+const task5 = function showLuckyTickets() {
   const initialObject = {};
   const min = $('#min-value-tickets').value;
   const max = $('#max-value-tickets').value;
@@ -229,11 +201,11 @@ function showLuckyTickets() {
   rootTickets.append(span);
 
   return span.innerHTML;
-}
+};
 
 // numeric sequence
 
-function showSequence() {
+const task6 = function showSequence() {
   const rowLengthSequence = $('#row-length-sequence').value;
   const squareValue = $('#square-value').value;
   const rootSequence = $('#root-sequence');
@@ -260,11 +232,11 @@ function showSequence() {
   rootSequence.append(span);
 
   return span.innerHTML;
-}
+};
 
 // fibonacci
 
-function showFibLength() {
+const task7Length = function showFibLength() {
   const fibLength = parseInt($('#fib-length').value, 10);
   const rootFibLength = $('#root-fib-length');
   const context = {};
@@ -293,9 +265,9 @@ function showFibLength() {
   rootFibLength.append(textarea);
 
   return textarea.innerHTML;
-}
+};
 
-function showFibRange() {
+const task7Range = function showFibRange() {
   const fibMin = parseInt($('#fib-min').value, 10);
   const fibMax = parseInt($('#fib-max').value, 10);
   const rootFibMinMax = $('#root-fibMinMax');
@@ -327,4 +299,22 @@ function showFibRange() {
   rootFibMinMax.append(span);
 
   return span.innerHTML;
-}
+};
+
+(function() {
+  const btnList = [
+    ['.btnChess', 'click', task1],
+    ['.btnAnalyse', 'click', task2],
+    ['.btnGetSort', 'click', task3],
+    ['.btnClearBase', 'click', clearBase],
+    ['.btnPalindrome', 'click', task4],
+    ['.btnTickets', 'click', task5],
+    ['.btnSequence', 'click', task6],
+    ['.btnFibLength', 'click', task7Length],
+    ['.btnFibMinMax', 'click', task7Range],
+  ];
+
+  btnList.forEach(el => {
+    $(el[0]).addEventListener(el[1], el[2]);
+  });
+})();

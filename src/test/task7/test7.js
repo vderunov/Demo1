@@ -119,19 +119,19 @@ const test7 = function makeTestsForTask7(assert) {
     describe('Error conditions', () => {
       const error = [
         {
-          description: 'The parameters are empty.: (length: )',
+          description: 'The parameters are empty or 0: (length: )',
           arguments: [''],
           result: {
             status: 'failed',
-            reason: 'The parameters are empty. Enter a valid parameters',
+            reason: 'The parameters are empty or 0. Enter a valid parameters',
           },
         },
         {
-          description: 'The parameters are empty: (min: , max: )',
+          description: 'The parameters are empty or 0: (min: , max: )',
           arguments: [''],
           result: {
             status: 'failed',
-            reason: 'The parameters are empty. Enter a valid parameters',
+            reason: 'The parameters are empty or 0. Enter a valid parameters',
           },
         },
         {

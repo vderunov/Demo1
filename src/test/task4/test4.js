@@ -58,15 +58,6 @@ const test4 = function makeTestsForTask4(assert) {
           },
         },
         {
-          description:
-            'Literal parametrs: (asd) => The parameter is not entered correctly. Expected number',
-          arguments: ['asd'],
-          result: {
-            status: 'failed',
-            reason: 'The parameter is not entered correctly. Expected number',
-          },
-        },
-        {
           description: 'Negative parameter: (-1) => Enter a positive number',
           arguments: ['-1'],
           result: {
@@ -92,6 +83,34 @@ const test4 = function makeTestsForTask4(assert) {
           result: {
             status: 'failed',
             reason: 'The parameter must be less than 100 symbols',
+          },
+        },
+        {
+          description: 'The letter at the beginning of the number: (a2546347)',
+          arguments: ['a2546347'],
+          result: { status: 'failed', reason: 'Enter only numbers' },
+        },
+        {
+          description: 'The letter in the middle of the number: (254a6347)',
+          arguments: ['254a6347'],
+          result: { status: 'failed', reason: 'Enter only numbers' },
+        },
+        {
+          description: 'Letter at the end of the number: (2546347a)',
+          arguments: ['254a6347'],
+          result: { status: 'failed', reason: 'Enter only numbers' },
+        },
+        {
+          description: 'Parameter not numbers: (!@#%$Homer)',
+          arguments: ['!@#%$Homer'],
+          result: { status: 'failed', reason: 'Enter only numbers' },
+        },
+        {
+          description: 'Parameter not numbers: (` `)',
+          arguments: [' '],
+          result: {
+            status: 'failed',
+            reason: 'The parameter is not entered correctly. Expected number',
           },
         },
       ];

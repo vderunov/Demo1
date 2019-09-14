@@ -7,7 +7,7 @@ const checkTask7 = function checkParameters(initialObject) {
     if (!initialObject.length) {
       return {
         status: 'failed',
-        reason: 'The parameters are empty. Enter a valid parameters',
+        reason: 'The parameters are empty or 0. Enter a valid parameters',
       };
     }
 
@@ -32,13 +32,6 @@ const checkTask7 = function checkParameters(initialObject) {
       };
     }
   } else {
-    if (!initialObject.min || !initialObject.max) {
-      return {
-        status: 'failed',
-        reason: 'The parameters are empty. Enter a valid parameters',
-      };
-    }
-
     if (!isNumeric(initialObject.min) || !isNumeric(initialObject.max)) {
       return {
         status: 'failed',

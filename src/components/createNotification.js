@@ -3,7 +3,7 @@ const notification = function createNotification(errorMessage) {
 
   div.innerHTML = `
   Status: ${errorMessage.status}; 
-  <br \/> 
+  <br /> 
   Reason: ${errorMessage.reason}`;
 
   return div;

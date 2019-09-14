@@ -11,6 +11,16 @@ const checkTask4 = function checkParameters(initialNumber) {
     };
   }
 
+  if (initialNumber < 0) {
+    return { status: 'failed', reason: 'Enter a positive number' };
+  }
+
+  for (let i = 0; i < initialNumber.length; i += 1) {
+    if (Number.isNaN(+initialNumber[i])) {
+      return { status: 'failed', reason: 'Enter only numbers' };
+    }
+  }
+
   if (!isNumeric(initialNumber)) {
     return {
       status: 'failed',
@@ -30,16 +40,6 @@ const checkTask4 = function checkParameters(initialNumber) {
       status: 'failed',
       reason: 'The parameter must be less than 100 symbols',
     };
-  }
-
-  if (initialNumber < 0) {
-    return { status: 'failed', reason: 'Enter a positive number' };
-  }
-
-  for (let i = 0; i < initialNumber.length; i += 1) {
-    if (Number.isNaN(initialNumber[i])) {
-      return { status: 'failed', reason: 'Enter only numbers' };
-    }
   }
 
   return false;

@@ -87,6 +87,21 @@ const test3 = function makeTestsForTask3(assert) {
     describe('Error conditions', () => {
       const error = [
         {
+          description: 'Empty parameter. All fields must be filled!',
+          arguments: [
+            {
+              vertices: '',
+              d: '',
+              e: '',
+              v: '',
+            },
+          ],
+          result: {
+            status: 'failed',
+            reason: 'Empty parameter. All fields must be filled!',
+          },
+        },
+        {
           description: 'The sides must be numbers: {a: 13, e: a, v: 15}',
           arguments: [
             {
