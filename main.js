@@ -3,7 +3,11 @@ import makeTrianglesSorting from './src/task3.js';
 import getPalindrome from './src/task4.js';
 import luckyTicketCounting from './src/task5.js';
 import numericSequence from './src/task6.js';
-import { getFibonacci, getFibonacciSeries, getFibonacciMinMax } from './src/task7.js';
+import {
+  getFibonacci,
+  getFibonacciSeries,
+  getFibonacciMinMax
+} from './src/task7.js';
 import analyzeEnvelopes from './src/task2.js';
 import checkParamTask1 from './src/components/checkParamTask1.js';
 import checkParamTask2 from './src/components/checkParamTask2.js';
@@ -29,13 +33,13 @@ const $ = function getElement(selector) {
     ['.btnSequence', 'click', showSequence],
     ['.btnFibLength', 'click', showFibLength],
     ['.btnFibMinMax', 'click', showFibRange],
-    ['.btnAnalyse', 'click', showAnalyzeEnvelopes],
+    ['.btnAnalyse', 'click', showAnalyzeEnvelopes]
   ];
 
-  btnList.forEach((el) => {
+  btnList.forEach(el => {
     $(el[0]).addEventListener(el[1], el[2]);
   });
-}());
+})();
 
 // tabs
 
@@ -78,7 +82,6 @@ function showAnalyzeEnvelopes() {
   envelopeB.width = parseFloat($('#width-env-b').value);
   envelopeB.height = parseFloat($('#height-env-b').value);
 
-
   const errorMessage = checkParamTask2(envelopeA, envelopeB);
 
   if (errorMessage) {
@@ -107,18 +110,17 @@ function createBase() {
   const objTriangle = {};
 
   objTriangle.vertices = $('#vertices').value;
-
   objTriangle[$('#first-side-letter').value] = parseInt(
     $('#first-side-size').value,
-    10,
+    10
   );
   objTriangle[$('#second-side-letter').value] = parseInt(
     $('#second-side-size').value,
-    10,
+    10
   );
   objTriangle[$('#third-side-letter').value] = parseInt(
     $('#third-side-size').value,
-    10,
+    10
   );
 
   arrTrianglesBase.push(objTriangle);

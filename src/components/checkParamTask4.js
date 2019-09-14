@@ -5,19 +5,31 @@ const checkTask4 = function checkParameters(initialNumber) {
   const maxLengthParam = 100;
 
   if (!initialNumber) {
-    return { status: 'failed', reason: 'Parameters are missing. Enter valid parameters' };
+    return {
+      status: 'failed',
+      reason: 'Parameters are missing. Enter valid parameters'
+    };
   }
 
   if (!isNumeric(initialNumber)) {
-    return { status: 'failed', reason: 'The parameter is not entered correctly. Expected number' };
+    return {
+      status: 'failed',
+      reason: 'The parameter is not entered correctly. Expected number'
+    };
   }
 
   if (initialNumber.length < minLengthParam) {
-    return { status: 'failed', reason: 'The parameter must be greater than 10' };
+    return {
+      status: 'failed',
+      reason: 'The parameter must be greater than 10'
+    };
   }
 
   if (initialNumber.length > maxLengthParam) {
-    return { status: 'failed', reason: 'The parameter must be less than 100 symbols' };
+    return {
+      status: 'failed',
+      reason: 'The parameter must be less than 100 symbols'
+    };
   }
 
   if (initialNumber < 0) {

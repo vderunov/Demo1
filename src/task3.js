@@ -11,7 +11,7 @@ const triangleSort = function makeTrianglesSorting(trianglesBase) {
   }
   array.sort((a, b) => b.areaTriangle - a.areaTriangle);
 
-  return array.map((element) => element.vertices);
+  return array.map(element => element.vertices);
 };
 
 export default triangleSort;

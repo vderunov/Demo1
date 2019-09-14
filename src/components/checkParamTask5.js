@@ -6,21 +6,25 @@ const checkTask5 = function checkParameters(initialObject) {
   if (!initialObject) {
     return {
       status: 'failed',
-      reason: 'The parameter is empty. Enter a valid parameter',
+      reason: 'The parameter is empty. Enter a valid parameter'
     };
   }
 
   if (initialObject.min === '' || initialObject.max === '') {
     return {
       status: 'failed',
-      reason: 'Empty parameters: enter parameters min and max',
+      reason: 'Empty parameters: enter parameters min and max'
     };
   }
 
-  if (initialObject.min.length > maxLengthProp || initialObject.max.length > maxLengthProp) {
+  if (
+    initialObject.min.length > maxLengthProp ||
+    initialObject.max.length > maxLengthProp
+  ) {
     return {
       status: 'failed',
-      reason: 'The maximum allowable value of the min and max properties is 999999',
+      reason:
+        'The maximum allowable value of the min and max properties is 999999'
     };
   }
 
@@ -28,7 +32,7 @@ const checkTask5 = function checkParameters(initialObject) {
     if (!isNumeric(initialObject.min[i])) {
       return {
         status: 'failed',
-        reason: 'Only numbers expected',
+        reason: 'Only numbers expected'
       };
     }
   }
@@ -37,7 +41,7 @@ const checkTask5 = function checkParameters(initialObject) {
     if (!isNumeric(initialObject.min[i])) {
       return {
         status: 'failed',
-        reason: 'Only numbers expected',
+        reason: 'Only numbers expected'
       };
     }
   }
@@ -45,7 +49,7 @@ const checkTask5 = function checkParameters(initialObject) {
   if (initialObject.min > initialObject.max) {
     return {
       status: 'failed',
-      reason: 'The min property must not be greater than the max property',
+      reason: 'The min property must not be greater than the max property'
     };
   }
   return false;

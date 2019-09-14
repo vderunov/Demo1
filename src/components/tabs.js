@@ -19,7 +19,7 @@ const tabs = function makeTabs() {
     }
   }
 
-  info.addEventListener('click', (event) => {
+  info.addEventListener('click', event => {
     const { target } = event;
     if (target && target.classList.contains('info-header-tab')) {
       for (let i = 0; i < tab.length; i += 1) {

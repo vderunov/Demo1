@@ -21,13 +21,13 @@ const luckyTicket = function luckyTicketCounting(initialObject) {
     return {
       winner: 'Winner: Easy way to count',
       easy: easyWayCount,
-      hard: hardWayCount,
+      hard: hardWayCount
     };
   }
   return {
     winner: 'Winner: Hard way to count',
     easy: easyWayCount,
-    hard: hardWayCount,
+    hard: hardWayCount
   };
 };
 

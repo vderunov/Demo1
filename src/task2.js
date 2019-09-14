@@ -1,5 +1,8 @@
 const envelope = function analyzeEnvelopes(envelopeA, envelopeB) {
-  if (envelopeB.height < envelopeA.height && envelopeB.width < envelopeA.width) {
+  if (
+    envelopeB.height < envelopeA.height &&
+    envelopeB.width < envelopeA.width
+  ) {
     return 0;
   }
 

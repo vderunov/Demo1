@@ -7,56 +7,56 @@ const checkTask7 = function checkParameters(initialObject) {
     if (!initialObject.length) {
       return {
         status: 'failed',
-        reason: 'The parameters are empty. Enter a valid parameters',
+        reason: 'The parameters are empty. Enter a valid parameters'
       };
     }
 
     if (!isNumeric(initialObject.length)) {
       return {
         status: 'failed',
-        reason: 'Error entering parameters. Parameters must be numbers',
+        reason: 'Error entering parameters. Parameters must be numbers'
       };
     }
 
     if (initialObject.length < 0) {
       return {
         status: 'failed',
-        reason: 'Parameter cannot be negative',
+        reason: 'Parameter cannot be negative'
       };
     }
 
     if (initialObject.length > maxLength) {
       return {
         status: 'failed',
-        reason: 'Maximum length: 1000',
+        reason: 'Maximum length: 1000'
       };
     }
   } else {
     if (!initialObject.min || !initialObject.max) {
       return {
         status: 'failed',
-        reason: 'The parameters are empty. Enter a valid parameters',
+        reason: 'The parameters are empty. Enter a valid parameters'
       };
     }
 
     if (!isNumeric(initialObject.min) || !isNumeric(initialObject.max)) {
       return {
         status: 'failed',
-        reason: 'Error entering parameters. Parameters must be numbers',
+        reason: 'Error entering parameters. Parameters must be numbers'
       };
     }
 
     if (initialObject.min > initialObject.max) {
       return {
         status: 'failed',
-        reason: 'Min parameter cannot be greater than max parameter',
+        reason: 'Min parameter cannot be greater than max parameter'
       };
     }
 
     if (initialObject.min < 0) {
       return {
         status: 'failed',
-        reason: 'Parameter cannot be negative',
+        reason: 'Parameter cannot be negative'
       };
     }
   }
