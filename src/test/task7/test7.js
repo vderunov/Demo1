@@ -10,122 +10,172 @@ const test7 = function makeTestsForTask7(assert) {
     });
 
     describe('Fibonacci numbers series', () => {
-      it('With a length of 8, the result: [0, 1, 1, 2, 3, 5, 8, 13]', () => {
-        assert.deepEqual(getFibonacciSeries({
+      const valid = [{
+        description: 'With a length of 8, the result: [0, 1, 1, 2, 3, 5, 8, 13]',
+        arguments: [{
           length: 8,
-        }), [0, 1, 1, 2, 3, 5, 8, 13]);
-      });
-
-      it('With a length of 4, the result: [0, 1, 1, 2]', () => {
-        assert.deepEqual(getFibonacciSeries({
+        }],
+        result: [0, 1, 1, 2, 3, 5, 8, 13],
+      },
+      {
+        description: 'With a length of 4, the result: [0, 1, 1, 2]',
+        arguments: [{
           length: 4,
-        }), [0, 1, 1, 2]);
-      });
-
-      it('With a length of 1, the result: [0]', () => {
-        assert.deepEqual(getFibonacciSeries({
+        }],
+        result: [0, 1, 1, 2],
+      },
+      {
+        description: 'With a length of 1, the result: [0]',
+        arguments: [{
           length: 1,
-        }), [0]);
-      });
-
-      it('With a length of 0, the result: []', () => {
-        assert.deepEqual(getFibonacciSeries({
+        }],
+        result: [0],
+      },
+      {
+        description: 'With a length of 0, the result: []',
+        arguments: [{
           length: 0,
-        }), []);
+        }],
+        result: [],
+      },
+      ];
+
+      valid.forEach((el) => {
+        it(el.description, () => {
+          assert.deepEqual(
+            getFibonacciSeries(...el.arguments),
+            el.result,
+          );
+        });
       });
     });
 
     describe('Fibonacci numbers range', () => {
-      it('Range: min: 2, max: 21 the result: [2, 3, 5, 8, 13, 21]', () => {
-        assert.deepEqual(getFibonacciMinMax({
+      const valid = [{
+        description: 'Range: min: 2, max: 21 the result: [2, 3, 5, 8, 13, 21]',
+        arguments: [{
           min: 2,
           max: 21,
-        }), [2, 3, 5, 8, 13, 21]);
-      });
-
-      it('Range: min: 8, max: 34 the result: [8, 13, 21, 34]', () => {
-        assert.deepEqual(getFibonacciMinMax({
+        }],
+        result: [2, 3, 5, 8, 13, 21],
+      },
+      {
+        description: 'Range: min: 8, max: 34 the result: [8, 13, 21, 34]',
+        arguments: [{
           min: 8,
           max: 34,
-        }), [8, 13, 21, 34]);
-      });
-
-      it('Range: min: 1, max: 1 the result: [1, 1]', () => {
-        assert.deepEqual(getFibonacciMinMax({
+        }],
+        result: [8, 13, 21, 34],
+      },
+      {
+        description: 'Range: min: 8, max: 34 the result: [8, 13, 21, 34]',
+        arguments: [{
           min: 1,
           max: 1,
-        }), [1, 1]);
-      });
-
-      it('Range: min: 0, max: 0 the result: []', () => {
-        assert.deepEqual(getFibonacciMinMax({
+        }],
+        result: [1, 1],
+      },
+      {
+        description: 'Range: min: 0, max: 0 the result: []',
+        arguments: [{
           min: 0,
           max: 0,
-        }), []);
+        }],
+        result: [],
+      },
+      ];
+
+      valid.forEach((el) => {
+        it(el.description, () => {
+          assert.deepEqual(
+            getFibonacciMinMax(...el.arguments),
+            el.result,
+          );
+        });
       });
     });
 
     describe('Error conditions', () => {
-      it('The parameters are empty.: (length: )', () => {
-        assert.deepEqual(checkParamTask7(''), {
-          status: 'failed',
-          reason: 'The parameters are empty. Enter a valid parameters',
-        });
-      });
+      const error = [
+        {
+          description: 'The parameters are empty.: (length: )',
+          arguments: [''],
+          result: {
+            status: 'failed',
+            reason: 'The parameters are empty. Enter a valid parameters',
+          },
+        }, {
+          description: 'The parameters are empty: (min: , max: )',
+          arguments: [''],
+          result: {
+            status: 'failed',
+            reason: 'The parameters are empty. Enter a valid parameters',
+          },
+        },
+        {
+          description: 'Parameters must be numbers: ({ length: g })',
+          arguments: [{ length: 'g' }],
+          result: {
+            status: 'failed',
+            reason: 'Error entering parameters. Parameters must be numbers',
+          },
+        },
+        {
+          description: 'Parameter cannot be negative: ({ length: -1 })',
+          arguments: [{ length: -1 }],
+          result: {
+            status: 'failed',
+            reason: 'Parameter cannot be negative',
+          },
+        },
+        {
+          description: 'Maximum length: 1000: ({ length: 10000 })',
+          arguments: [{ length: 10000 }],
+          result: {
+            status: 'failed',
+            reason: 'Maximum length: 1000',
+          },
+        },
+        {
+          description: 'Parameters must be numbers: ({ min: a, max: 10 })',
+          arguments: [{ min: 'a', max: 10 }],
+          result: {
+            status: 'failed',
+            reason: 'Error entering parameters. Parameters must be numbers',
+          },
+        },
+        {
+          description: 'Parameters must be numbers: ({ min: 10, max: a })',
+          arguments: [{ min: 10, max: 'a' }],
+          result: {
+            status: 'failed',
+            reason: 'Error entering parameters. Parameters must be numbers',
+          },
+        },
+        {
+          description: 'Min parameter cannot be greater than max parameter: ({ min: 10, max: 9 })',
+          arguments: [{ min: 10, max: 9 }],
+          result: {
+            status: 'failed',
+            reason: 'Min parameter cannot be greater than max parameter',
+          },
+        },
+        {
+          description: 'Parameter cannot be negative: ({ min: -1, max: 10 })',
+          arguments: [{ min: -1, max: 10 }],
+          result: {
+            status: 'failed',
+            reason: 'Parameter cannot be negative',
+          },
+        },
+      ];
 
-      it('The parameters are empty: (min: , max: )', () => {
-        assert.deepEqual(checkParamTask7(''), {
-          status: 'failed',
-          reason: 'The parameters are empty. Enter a valid parameters',
-        });
-      });
-
-      it('Parameters must be numbers: ({ length: g })', () => {
-        assert.deepEqual(checkParamTask7({ length: 'g' }), {
-          status: 'failed',
-          reason: 'Error entering parameters. Parameters must be numbers',
-        });
-      });
-
-      it('Parameter cannot be negative: ({ length: -1 })', () => {
-        assert.deepEqual(checkParamTask7({ length: -1 }), {
-          status: 'failed',
-          reason: 'Parameter cannot be negative',
-        });
-      });
-
-      it('Maximum length: 1000: ({ length: 10000 })', () => {
-        assert.deepEqual(checkParamTask7({ length: 10000 }), {
-          status: 'failed',
-          reason: 'Maximum length: 1000',
-        });
-      });
-
-      it('Parameters must be numbers: ({ min: a, max: 10 })', () => {
-        assert.deepEqual(checkParamTask7({ min: 'a', max: 10 }), {
-          status: 'failed',
-          reason: 'Error entering parameters. Parameters must be numbers',
-        });
-      });
-
-      it('Parameters must be numbers: ({ min: 10, max: a })', () => {
-        assert.deepEqual(checkParamTask7({ min: 10, max: 'a' }), {
-          status: 'failed',
-          reason: 'Error entering parameters. Parameters must be numbers',
-        });
-      });
-
-      it('Min parameter cannot be greater than max parameter: ({ min: 10, max: 9 })', () => {
-        assert.deepEqual(checkParamTask7({ min: 10, max: 9 }), {
-          status: 'failed',
-          reason: 'Min parameter cannot be greater than max parameter',
-        });
-      });
-
-      it('Parameter cannot be negative: ({ min: -1, max: 10 })', () => {
-        assert.deepEqual(checkParamTask7({ min: -1, max: 10 }), {
-          status: 'failed',
-          reason: 'Parameter cannot be negative',
+      error.forEach((el) => {
+        it(el.description, () => {
+          assert.deepEqual(
+            checkParamTask7(...el.arguments),
+            el.result,
+          );
         });
       });
     });

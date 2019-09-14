@@ -1,10 +1,10 @@
-export default function makeTabs() {
+const tabs = function makeTabs() {
   const info = document.querySelector('.info-header');
   const tab = document.querySelectorAll('.info-header-tab');
   const tabContent = document.querySelectorAll('.info-tabcontent');
 
   function hideTabContent(a) {
-    for (let i = a; i < tabContent.length; i++) {
+    for (let i = a; i < tabContent.length; i += 1) {
       tabContent[i].classList.remove('show');
       tabContent[i].classList.add('hide');
     }
@@ -19,10 +19,10 @@ export default function makeTabs() {
     }
   }
 
-  info.addEventListener('click', event => {
+  info.addEventListener('click', (event) => {
     const { target } = event;
     if (target && target.classList.contains('info-header-tab')) {
-      for (let i = 0; i < tab.length; i++) {
+      for (let i = 0; i < tab.length; i += 1) {
         if (target === tab[i]) {
           hideTabContent(0);
           showTabContent(i);
@@ -31,4 +31,6 @@ export default function makeTabs() {
       }
     }
   });
-}
+};
+
+export default tabs;

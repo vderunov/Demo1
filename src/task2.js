@@ -1,44 +1,34 @@
-import { checkParameters } from './components/checkParamTask2.js';
+const envelope = function analyzeEnvelopes(envelopeA, envelopeB) {
+  if (envelopeB.height < envelopeA.height && envelopeB.width < envelopeA.width) {
+    return 0;
+  }
 
-export function analyzeEnvelopes(envelopeA, envelopeB) {
-    if (envelopeB.height < envelopeA.height && envelopeB.width < envelopeA.width) {
-        return 0;
-    }
+  const diagonal = Math.sqrt(envelopeB.width ** 2 + envelopeB.height ** 2);
 
-    const parameterError = checkParameters(envelopeA, envelopeB);
+  const radius = diagonal / 2;
 
-    if (parameterError) {
-        return parameterError;
-    }
+  const halfWidthA = envelopeA.width / 2;
+  const halfHeightA = envelopeA.height / 2;
 
-    const diagonal = Math.sqrt(envelopeB.width ** 2 + envelopeB.height ** 2);
+  const cat1 = Math.sqrt(radius ** 2 - halfWidthA ** 2);
+  const cat2 = Math.sqrt(radius ** 2 - halfHeightA ** 2);
 
-    const radius = diagonal / 2;
+  const catLittle1 = (envelopeA.height - cat1 * 2) / 2;
+  const catLittle2 = (envelopeA.width - cat2 * 2) / 2;
 
-    const halfWidthA = envelopeA.width / 2;
-    const halfHeightA = envelopeA.height / 2;
+  const hypotenuse = Math.sqrt(catLittle1 ** 2 + catLittle2 ** 2);
 
-    const cat1 = Math.sqrt(radius ** 2 - halfWidthA ** 2);
-    const cat2 = Math.sqrt(radius ** 2 - halfHeightA ** 2);
+  return 'Margin: ', hypotenuse - envelopeB.height;
+};
 
-    const catLittle1 = (envelopeA.height - cat1 * 2) / 2;
-    const catLittle2 = (envelopeA.width - cat2 * 2) / 2;
-
-    const hypotenuse = Math.sqrt(catLittle1 ** 2 + catLittle2 ** 2);
-
-    return 'Margin: ', hypotenuse - envelopeB.height;
-}
-
-export default analyzeEnvelopes;
+export default envelope;
 
 // const envelopeA = {
-//     width: 9,
-//     height: 5,
+//   width: 9,
+//   height: 5,
 // };
 
 // const envelopeB = {
-//     width: 9.49,
-//     height: 1,
+//   width: 9.49,
+//   height: 1,
 // };
-
-// console.log(analyzeEnvelopes(envelopeA, envelopeB));

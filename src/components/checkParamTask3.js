@@ -1,6 +1,6 @@
 import isNumeric from './isNumeric.js';
 
-export function checkParameters(arrTriangles) {
+const checkTask3 = function checkParameters(arrTriangles) {
   if (!arrTriangles) {
     return {
       status: 'failed',
@@ -19,7 +19,7 @@ export function checkParameters(arrTriangles) {
     return { status: 'failed', reason: 'Incoming parameter empty array' };
   }
 
-  for (let i = 0; i < arrTriangles.length; i++) {
+  for (let i = 0; i < arrTriangles.length; i += 1) {
     const [vertices, a, b, c] = Object.values(arrTriangles[i]);
 
     if (typeof arrTriangles[i] !== 'object') {
@@ -93,6 +93,6 @@ export function checkParameters(arrTriangles) {
     }
   }
   return false;
-}
+};
 
-export default checkParameters;
+export default checkTask3;

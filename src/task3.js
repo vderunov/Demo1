@@ -1,7 +1,7 @@
-export default function makeTrianglesSorting(trianglesBase) {
+const triangleSort = function makeTrianglesSorting(trianglesBase) {
   const array = [];
 
-  for (let i = 0; i < trianglesBase.length; i++) {
+  for (let i = 0; i < trianglesBase.length; i += 1) {
     const [vertices, a, b, c] = Object.values(trianglesBase[i]);
     // Determine the half-perimeter
     const p = (a + b + c) * 0.5;
@@ -11,5 +11,7 @@ export default function makeTrianglesSorting(trianglesBase) {
   }
   array.sort((a, b) => b.areaTriangle - a.areaTriangle);
 
-  return array.map(element => element.vertices);
-}
+  return array.map((element) => element.vertices);
+};
+
+export default triangleSort;

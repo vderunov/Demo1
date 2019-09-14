@@ -1,6 +1,6 @@
 import isNumeric from './isNumeric.js';
 
-export function checkParameters(initialObject) {
+const checkTask5 = function checkParameters(initialObject) {
   const maxLengthProp = 6;
 
   if (!initialObject) {
@@ -24,7 +24,7 @@ export function checkParameters(initialObject) {
     };
   }
 
-  for (let i = 0; i < initialObject.min.length; i++) {
+  for (let i = 0; i < initialObject.min.length; i += 1) {
     if (!isNumeric(initialObject.min[i])) {
       return {
         status: 'failed',
@@ -33,7 +33,7 @@ export function checkParameters(initialObject) {
     }
   }
 
-  for (let i = 0; i < initialObject.max.length; i++) {
+  for (let i = 0; i < initialObject.max.length; i += 1) {
     if (!isNumeric(initialObject.min[i])) {
       return {
         status: 'failed',
@@ -48,8 +48,7 @@ export function checkParameters(initialObject) {
       reason: 'The min property must not be greater than the max property',
     };
   }
-
   return false;
-}
+};
 
-export default checkParameters;
+export default checkTask5;

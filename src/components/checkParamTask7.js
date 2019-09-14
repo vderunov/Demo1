@@ -1,6 +1,6 @@
 import isNumeric from './isNumeric.js';
 
-export function checkParameters(initialObject) {
+const checkTask7 = function checkParameters(initialObject) {
   const maxLength = 1000;
 
   if ({}.hasOwnProperty.call(initialObject, 'length')) {
@@ -61,6 +61,6 @@ export function checkParameters(initialObject) {
     }
   }
   return false;
-}
+};
 
-export default checkParameters;
+export default checkTask7;

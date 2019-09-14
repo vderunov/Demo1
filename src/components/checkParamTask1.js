@@ -1,6 +1,6 @@
 import isNumeric from './isNumeric.js';
 
-export function checkParameters(length, width, symbol) {
+const checkTas1 = function checkParameters(length, width, symbol) {
   const maxBoardSize = 50;
   const maxSymbolLength = 1;
   const zero = '0';
@@ -62,6 +62,6 @@ export function checkParameters(length, width, symbol) {
     };
   }
   return false;
-}
+};
 
-export default checkParameters;
+export default checkTas1;

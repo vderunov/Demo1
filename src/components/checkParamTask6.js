@@ -1,6 +1,6 @@
 import isNumeric from './isNumeric.js';
 
-export function checkParameters(rowLength, minAmountExponent) {
+const checkTask = function checkParameters(rowLength, minAmountExponent) {
   const maxLength = 500;
   const maxExponentValue = 1000000;
 
@@ -52,8 +52,7 @@ export function checkParameters(rowLength, minAmountExponent) {
       reason: 'Error entering parameters. Parameters must be positive',
     };
   }
-
   return false;
-}
+};
 
-export default checkParameters;
+export default checkTask;

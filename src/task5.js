@@ -1,4 +1,4 @@
-export default function luckyTicketCounting(initialObject) {
+const luckyTicket = function luckyTicketCounting(initialObject) {
   let easyWayCount = 0;
   let hardWayCount = 0;
   let ticketStr;
@@ -9,11 +9,11 @@ export default function luckyTicketCounting(initialObject) {
     ticketStr = String(i).padStart(6, '0');
 
     if (findTicketsEasyWay(ticketStr)) {
-      easyWayCount++;
+      easyWayCount += 1;
     }
 
     if (findTicketsHardWay(ticketStr)) {
-      hardWayCount++;
+      hardWayCount += 1;
     }
   }
 
@@ -29,7 +29,7 @@ export default function luckyTicketCounting(initialObject) {
     easy: easyWayCount,
     hard: hardWayCount,
   };
-}
+};
 
 function findTicketsEasyWay(ticketStr) {
   let firstThreeDigits = 0;
@@ -60,3 +60,5 @@ function findTicketsHardWay(ticketStr) {
 
   return firstThreeDigits === lastThreeDigits;
 }
+
+export default luckyTicket;
