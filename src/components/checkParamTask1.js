@@ -62,7 +62,7 @@ const checkTas1 = function checkParameters(length, width, symbol) {
   if (length % 2 !== 0) {
     return {
       status: 'failed',
-      reason: 'Length and width must be even: (3, 3, *)',
+      reason: 'Length and width must be even: (4, 4, *)',
     };
   }
 

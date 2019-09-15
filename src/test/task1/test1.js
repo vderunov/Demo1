@@ -177,7 +177,7 @@ const test1 = function makeTestsForTask1(assert) {
           arguments: [3, 3, '*'],
           result: {
             status: 'failed',
-            reason: 'Length and width must be even: (3, 3, *)',
+            reason: 'Length and width must be even: (4, 4, *)',
           },
         },
       ];
