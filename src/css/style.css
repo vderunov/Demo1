@@ -47,6 +47,10 @@ pre {
   margin: 5px;
 }
 
+a {
+  text-decoration: none;
+}
+
 .btn {
   background-color: #03afae;
   color: #fff;
@@ -57,6 +61,18 @@ pre {
   padding: 5px;
   margin: 5px;
   font-size: 14px;
+}
+
+.test-link {
+  background-color: #03afae;
+  color: #fff;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
+}
+
+.d-inline-block {
+  display: inline-block;
 }
 
 .clear-all-inputs {
