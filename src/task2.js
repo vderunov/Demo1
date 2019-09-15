@@ -1,37 +1,25 @@
 const envelope = function analyzeEnvelopes(envelopeA, envelopeB) {
+  const perimeterA = (+envelopeA.width + +envelopeA.height) * 2;
+  const perimeterB = (+envelopeB.width + +envelopeB.height) * 2;
+  const bigger = perimeterA > perimeterB ? 1 : 2;
+
+  const calc =
+    (2 * envelopeB.width * envelopeB.height * envelopeA.width +
+      (envelopeB.width ** 2 - envelopeB.height ** 2) *
+        Math.sqrt(
+          envelopeB.width ** 2 + envelopeB.height ** 2 - envelopeA.width ** 2,
+        )) /
+    (envelopeB.width ** 2 + envelopeB.height ** 2);
+
   if (
-    envelopeB.height < envelopeA.height &&
-    envelopeB.width < envelopeA.width
+    (envelopeB.width < envelopeA.width &&
+      envelopeB.height < envelopeA.height) ||
+    (envelopeB.width > envelopeA.width && envelopeA.height >= calc)
   ) {
-    return 0;
+    return bigger;
   }
 
-  const diagonal = Math.sqrt(envelopeB.width ** 2 + envelopeB.height ** 2);
-
-  const radius = diagonal / 2;
-
-  const halfWidthA = envelopeA.width / 2;
-  const halfHeightA = envelopeA.height / 2;
-
-  const cat1 = Math.sqrt(radius ** 2 - halfWidthA ** 2);
-  const cat2 = Math.sqrt(radius ** 2 - halfHeightA ** 2);
-
-  const catLittle1 = (envelopeA.height - cat1 * 2) / 2;
-  const catLittle2 = (envelopeA.width - cat2 * 2) / 2;
-
-  const hypotenuse = Math.sqrt(catLittle1 ** 2 + catLittle2 ** 2);
-
-  return 'Margin: ', hypotenuse - envelopeB.height;
+  return 0;
 };
 
 export default envelope;
-
-// const envelopeA = {
-//   width: 9,
-//   height: 5,
-// };
-
-// const envelopeB = {
-//   width: 9.49,
-//   height: 1,
-// };

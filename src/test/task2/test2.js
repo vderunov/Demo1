@@ -3,17 +3,46 @@ import checkParamTask2 from '../../components/checkParamTask2.js';
 
 const test2 = function makeTestsForTask2(assert) {
   describe('Analysis of envelopes', () => {
+    it('Does the function return a number?', () => {
+      assert.typeOf(
+        analyzeEnvelopes(
+          {
+            width: 9,
+            height: 5,
+          },
+          {
+            width: 9.49,
+            height: 1,
+          },
+        ),
+        'number',
+      );
+    });
+
     const valid = [
       {
-        description: 'Sides of envelope A are larger than sides of envelope B',
-        arguments: [{ width: 10, height: 11 }, { width: 9, height: 10 }],
-        result: '0',
+        description:
+          'With parameters: { width: 9, height: 5 }, { width: 9.49, height: 1 }. Result: 1',
+        arguments: [{ width: 9, height: 5 }, { width: 9.49, height: 1 }],
+        result: 1,
+      },
+      {
+        description:
+          'With parameters: { width: 2, height: 7 }, { width: 8, height: 9 }. Result: 2',
+        arguments: [{ width: 2, height: 7 }, { width: 8, height: 9 }],
+        result: 2,
+      },
+      {
+        description:
+          'With parameters: { width: 9, height: 5 }, { width: 9, height: 4 }. Result: 0',
+        arguments: [{ width: 9, height: 5 }, { width: 9, height: 4 }],
+        result: 0,
       },
     ];
 
     valid.forEach(el => {
       it(el.description, () => {
-        assert.equal(analyzeEnvelopes(...el.arguments), el.result);
+        assert.deepEqual(analyzeEnvelopes(...el.arguments), el.result);
       });
     });
 

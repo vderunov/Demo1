@@ -91,9 +91,7 @@ const task2 = function showAnalyzeEnvelopes() {
   }
 
   const span = document.createElement('span');
-  const result = analyzeEnvelopes(envelopeA, envelopeB);
-
-  span.innerHTML = result;
+  span.innerHTML = analyzeEnvelopes(envelopeA, envelopeB);
   rootEnvelopes.append(span);
 
   return span.innerHTML;
