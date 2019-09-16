@@ -23,8 +23,8 @@ import makeTabs from './src/aux/tabs.js';
 import clearInputs from './src/aux/clearAllInputs.js';
 import createNotification from './src/aux/createNotification.js';
 import getElem from './src/aux/getElem.js';
-export { createNotification, getElem };
 
+export { createNotification, getElem };
 export { checkParamTask1, showChessBoard };
 export { checkParamTask2, analyzeEnvelopes };
 export { checkParamTask3, makeTrianglesSorting };
