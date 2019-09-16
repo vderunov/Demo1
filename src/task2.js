@@ -1,6 +1,6 @@
-const envelope = function analyzeEnvelopes(envelopeA, envelopeB) {
-  const perimeterA = (+envelopeA.width + +envelopeA.height) * 2;
-  const perimeterB = (+envelopeB.width + +envelopeB.height) * 2;
+export default function analyzeEnvelopes(envelopeA, envelopeB) {
+  const perimeterA = (Number(envelopeA.width) + Number(envelopeA.height)) * 2;
+  const perimeterB = (Number(envelopeB.width) + Number(envelopeB.height)) * 2;
   const bigger = perimeterA > perimeterB ? 1 : 2;
 
   const calc =
@@ -20,6 +20,4 @@ const envelope = function analyzeEnvelopes(envelopeA, envelopeB) {
   }
 
   return 0;
-};
-
-export default envelope;
+}

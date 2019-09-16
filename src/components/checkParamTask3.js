@@ -1,6 +1,6 @@
-import isNumeric from './isNumeric.js';
+import isNumeric from '../aux/isNumeric.js';
 
-const checkTask3 = function checkParameters(arrTriangles) {
+export default function checkParameters(arrTriangles) {
   if (!Array.isArray(arrTriangles)) {
     return {
       status: 'failed',
@@ -43,7 +43,11 @@ const checkTask3 = function checkParameters(arrTriangles) {
       };
     }
 
-    if (+a + +b <= +c || +a + +c <= +b || +b + +c <= +a) {
+    if (
+      Number(a) + Number(b) <= Number(c) ||
+      Number(a) + Number(c) <= Number(b) ||
+      Number(b) + Number(c) <= Number(a)
+    ) {
       return {
         status: 'failed',
         reason: 'Triangle does not exist. Check side sizes',
@@ -76,9 +80,9 @@ const checkTask3 = function checkParameters(arrTriangles) {
     }
 
     if (
-      typeof +arrTriangles[i][keyOne] !== 'number' ||
-      typeof +arrTriangles[i][keyTwo] !== 'number' ||
-      typeof +arrTriangles[i][keyThree] !== 'number'
+      typeof Number(arrTriangles[i][keyOne]) !== 'number' ||
+      typeof Number(arrTriangles[i][keyTwo]) !== 'number' ||
+      typeof Number(arrTriangles[i][keyThree]) !== 'number'
     ) {
       return {
         status: 'failed',
@@ -88,6 +92,4 @@ const checkTask3 = function checkParameters(arrTriangles) {
   }
 
   return false;
-};
-
-export default checkTask3;
+}

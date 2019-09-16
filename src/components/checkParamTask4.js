@@ -1,6 +1,6 @@
-import isNumeric from './isNumeric.js';
+import isNumeric from '../aux/isNumeric.js';
 
-const checkTask4 = function checkParameters(initialNumber) {
+export default function checkParameters(initialNumber) {
   const minLengthParam = 2;
   const maxLengthParam = 100;
 
@@ -16,7 +16,7 @@ const checkTask4 = function checkParameters(initialNumber) {
   }
 
   for (let i = 0; i < initialNumber.length; i += 1) {
-    if (Number.isNaN(+initialNumber[i])) {
+    if (Number.isNaN(Number(initialNumber[i]))) {
       return { status: 'failed', reason: 'Enter only numbers' };
     }
   }
@@ -43,6 +43,4 @@ const checkTask4 = function checkParameters(initialNumber) {
   }
 
   return false;
-};
-
-export default checkTask4;
+}

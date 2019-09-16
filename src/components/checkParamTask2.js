@@ -1,6 +1,6 @@
-import isNumeric from './isNumeric.js';
+import isNumeric from '../aux/isNumeric.js';
 
-const checkTask4 = function checkParameters(envelopeA, envelopeB) {
+export default function checkParameters(envelopeA, envelopeB) {
   if (
     envelopeA.width === '' &&
     envelopeA.height === '' &&
@@ -108,6 +108,4 @@ const checkTask4 = function checkParameters(envelopeA, envelopeB) {
   }
 
   return false;
-};
-
-export default checkTask4;
+}

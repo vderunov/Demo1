@@ -1,6 +1,6 @@
-import isNumeric from './isNumeric.js';
+import isNumeric from '../aux/isNumeric.js';
 
-const checkTask5 = function checkParameters(initialObject) {
+export default function checkParameters(initialObject) {
   const maxLengthProp = 6;
 
   if (!initialObject) {
@@ -54,6 +54,4 @@ const checkTask5 = function checkParameters(initialObject) {
   }
 
   return false;
-};
-
-export default checkTask5;
+}

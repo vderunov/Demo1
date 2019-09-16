@@ -1,4 +1,4 @@
-const notification = function createNotification(errorMessage) {
+export default function createNotification(errorMessage) {
   const div = document.createElement('div');
 
   div.innerHTML = `
@@ -7,6 +7,4 @@ const notification = function createNotification(errorMessage) {
   Reason: ${errorMessage.reason}`;
 
   return div;
-};
-
-export default notification;
+}

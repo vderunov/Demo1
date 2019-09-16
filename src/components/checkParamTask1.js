@@ -1,6 +1,6 @@
-import isNumeric from './isNumeric.js';
+import isNumeric from '../aux/isNumeric.js';
 
-const checkTas1 = function checkParameters(length, width, symbol) {
+export default function checkParameters(length, width, symbol) {
   const maxBoardSize = 50;
   const maxSymbolLength = 1;
   const zero = '0';
@@ -31,7 +31,10 @@ const checkTas1 = function checkParameters(length, width, symbol) {
     };
   }
 
-  if (length !== width && (!Number.isNaN(+length) && !Number.isNaN(+width))) {
+  if (
+    length !== width &&
+    (!Number.isNaN(Number(length)) && !Number.isNaN(Number(width)))
+  ) {
     return {
       status: 'failed',
       reason: 'Width and length must be equal',
@@ -67,6 +70,4 @@ const checkTas1 = function checkParameters(length, width, symbol) {
   }
 
   return false;
-};
-
-export default checkTas1;
+}

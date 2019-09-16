@@ -1,4 +1,4 @@
-const numSequence = function numericSequence(rowLength, minAmountExponent) {
+export default function numericSequence(rowLength, minAmountExponent) {
   const arrNumbers = [];
   let base;
   let i = 0;
@@ -14,6 +14,4 @@ const numSequence = function numericSequence(rowLength, minAmountExponent) {
   } while (arrNumbers.length < rowLength);
 
   return arrNumbers.join(', ');
-};
-
-export default numSequence;
+}

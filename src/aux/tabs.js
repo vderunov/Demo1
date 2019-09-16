@@ -1,4 +1,4 @@
-const tabs = function makeTabs() {
+export default function makeTabs() {
   const info = document.querySelector('.info-header');
   const tab = document.querySelectorAll('.info-header-tab');
   const tabContent = document.querySelectorAll('.info-tabcontent');
@@ -31,6 +31,6 @@ const tabs = function makeTabs() {
       }
     }
   });
-};
+}
 
-export default tabs;
+makeTabs();

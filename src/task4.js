@@ -1,4 +1,6 @@
-const palindrome = function getPalindrome(initValue) {
+import flatten from './aux/flattenArray.js';
+
+export default function getPalindrome(initValue) {
   let initVal = initValue;
   let arrOfPalindromes = [];
   const minPalindromeLength = 2;
@@ -13,7 +15,7 @@ const palindrome = function getPalindrome(initValue) {
     .join('');
 
   if (initVal === reversedStr) {
-    return parseInt(initVal, 10);
+    return Number(initVal);
   }
 
   if (initVal[0] === initVal[initVal.length - 1] && initVal !== reversedStr) {
@@ -36,17 +38,4 @@ const palindrome = function getPalindrome(initValue) {
   }
 
   return Math.max(...arrOfPalindromes);
-};
-
-function flatten(arr) {
-  if (Array.isArray(arr)) {
-    return arr.reduce(
-      (accumulator, currentValue) => accumulator.concat(flatten(currentValue)),
-      [],
-    );
-  }
-
-  return arr;
 }
-
-export default palindrome;

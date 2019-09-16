@@ -1,4 +1,10 @@
-export { getFibonacci, getFibonacciSeries, getFibonacciMinMax };
+function getFibonacci(initialObject) {
+  if (initialObject.length) {
+    return getFibonacciSeries(initialObject);
+  }
+
+  return getFibonacciMinMax(initialObject);
+}
 
 function getFibonacciSeries(initialObject) {
   const series = initialObject.length;
@@ -32,10 +38,4 @@ function getFibonacciMinMax(initialObject) {
   return newArray;
 }
 
-function getFibonacci(initialObject) {
-  if ({}.hasOwnProperty.call(initialObject, 'length')) {
-    return getFibonacciSeries(initialObject);
-  }
-
-  return getFibonacciMinMax(initialObject);
-}
+export { getFibonacci, getFibonacciSeries, getFibonacciMinMax };

@@ -1,6 +1,6 @@
-import isNumeric from './isNumeric.js';
+import isNumeric from '../aux/isNumeric.js';
 
-const checkTask = function checkParameters(rowLength, minAmountExponent) {
+export default function checkParameters(rowLength, minAmountExponent) {
   const maxLength = 500;
   const maxExponentValue = 1000000;
 
@@ -55,6 +55,4 @@ const checkTask = function checkParameters(rowLength, minAmountExponent) {
   }
 
   return false;
-};
-
-export default checkTask;
+}

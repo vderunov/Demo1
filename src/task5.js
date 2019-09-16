@@ -1,4 +1,4 @@
-const luckyTicket = function luckyTicketCounting(initialObject) {
+export default function luckyTicketCounting(initialObject) {
   let easyWayCount = 0;
   let hardWayCount = 0;
   let ticketStr;
@@ -29,19 +29,19 @@ const luckyTicket = function luckyTicketCounting(initialObject) {
     easy: easyWayCount,
     hard: hardWayCount,
   };
-};
+}
 
 function findTicketsEasyWay(ticketStr) {
   let firstThreeDigits = 0;
   let lastThreeDigits = 0;
 
-  firstThreeDigits += +ticketStr[0];
-  firstThreeDigits += +ticketStr[1];
-  firstThreeDigits += +ticketStr[2];
+  firstThreeDigits += Number(ticketStr[0]);
+  firstThreeDigits += Number(ticketStr[1]);
+  firstThreeDigits += Number(ticketStr[2]);
 
-  lastThreeDigits += +ticketStr[3];
-  lastThreeDigits += +ticketStr[4];
-  lastThreeDigits += +ticketStr[5];
+  lastThreeDigits += Number(ticketStr[3]);
+  lastThreeDigits += Number(ticketStr[4]);
+  lastThreeDigits += Number(ticketStr[5]);
 
   return firstThreeDigits === lastThreeDigits;
 }
@@ -50,15 +50,13 @@ function findTicketsHardWay(ticketStr) {
   let firstThreeDigits = 0;
   let lastThreeDigits = 0;
 
-  firstThreeDigits += +ticketStr[0];
-  firstThreeDigits += +ticketStr[2];
-  firstThreeDigits += +ticketStr[4];
+  firstThreeDigits += Number(ticketStr[0]);
+  firstThreeDigits += Number(ticketStr[2]);
+  firstThreeDigits += Number(ticketStr[4]);
 
-  lastThreeDigits += +ticketStr[1];
-  lastThreeDigits += +ticketStr[3];
-  lastThreeDigits += +ticketStr[5];
+  lastThreeDigits += Number(ticketStr[1]);
+  lastThreeDigits += Number(ticketStr[3]);
+  lastThreeDigits += Number(ticketStr[5]);
 
   return firstThreeDigits === lastThreeDigits;
 }
-
-export default luckyTicket;

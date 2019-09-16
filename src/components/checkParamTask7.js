@@ -1,10 +1,10 @@
-import isNumeric from './isNumeric.js';
+import isNumeric from '../aux/isNumeric.js';
 
-const checkTask7 = function checkParameters(initialObject) {
+export default function checkParameters(initialObject) {
   const maxLength = 1000;
 
-  if ({}.hasOwnProperty.call(initialObject, 'length')) {
-    if (!initialObject.length) {
+  if (initialObject.hasOwnProperty('length')) {
+    if (!initialObject.length || initialObject.length === '0') {
       return {
         status: 'failed',
         reason: 'The parameters are empty or 0. Enter a valid parameters',
@@ -35,7 +35,7 @@ const checkTask7 = function checkParameters(initialObject) {
     if (!isNumeric(initialObject.min) || !isNumeric(initialObject.max)) {
       return {
         status: 'failed',
-        reason: 'Error entering parameters. Parameters must be numbers',
+        reason: 'Invalid parameters. Parameters must be numbers',
       };
     }
 
@@ -55,6 +55,4 @@ const checkTask7 = function checkParameters(initialObject) {
   }
 
   return false;
-};
-
-export default checkTask7;
+}
